@@ -1,1 +1,6 @@
-
+.bg-primary {
+    background: #1C6E8C !important;
+}
+.text-primary {
+    color: whitesmoke !important;
+}

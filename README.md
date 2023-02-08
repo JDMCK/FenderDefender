@@ -1,8 +1,7 @@
-# Drive Safe
+# FenderDefender?
 
 ## 1. Project Description
-State your app in a nutshell, or one-sentence pitch. Give some elaboration on what the core features are.  
-This browser based web application to ... 
+An application that suggests whether the user should drive based on the car specs, road conditions, weather, and locations.
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
