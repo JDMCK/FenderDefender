@@ -4,3 +4,7 @@
 .text-primary {
     color: whitesmoke !important;
 }
+
+.navbar-nav {
+    --bs-nav-link-color: whitesmoke;
+}
