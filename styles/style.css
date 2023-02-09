@@ -8,3 +8,13 @@
 .navbar-nav {
     --bs-nav-link-color: whitesmoke;
 }
+
+#copyright {
+    display: inline-block;
+}
+
+
+.github1 {
+    width: 2%;
+    
+}
