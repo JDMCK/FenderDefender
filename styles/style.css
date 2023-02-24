@@ -1,20 +1,23 @@
-.bg-primary {
-    background: #1C6E8C !important;
-}
-.text-primary {
-    color: white !important;
-}
+/* Navbar Stylings */
 
 .navbar-nav {
     --bs-nav-link-color: whitesmoke;
 }
 
+/* Footer Stylings */
+
+.github1 {
+    width: 2%;
+}
 #copyright {
     display: inline-block;
 }
 
+/* General Stylings */
 
-.github1 {
-    width: 2%;
-    
+.bg-primary {
+    background: #1C6E8C !important;
+}
+.text-primary {
+    color: white !important;
 }
