@@ -5,12 +5,18 @@
 }
 
 /* Footer Stylings */
+.footer {
+    align-items: end;
+    justify-content: end;
+}
 
 .github1 {
-    width: 2%;
+    width: 3%;
+
 }
 #copyright {
     display: inline-block;
+
 }
 
 /* General Stylings */
