@@ -4,13 +4,14 @@
     --bs-nav-link-color: whitesmoke;
 }
 
-/* Footer Stylings */
-
-.github1 {
-    width: 2%;
+/* Searchbar Stylings */
+.searchbar {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 1em;
 }
-#copyright {
-    display: inline-block;
+#searchButton {
+    margin-top: 1em;
 }
 
 /* General Stylings */
