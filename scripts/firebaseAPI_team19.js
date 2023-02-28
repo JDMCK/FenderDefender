@@ -1,3 +1,5 @@
+//Firebase API
+
 var firebaseConfig = {
   apiKey: "AIzaSyCcjyl44eHQwAo8oEcOBbxZI5dA3BiTNcQ",
   authDomain: "project-5895497555980020212.firebaseapp.com",
