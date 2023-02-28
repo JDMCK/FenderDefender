@@ -1,0 +1,22 @@
+{
+  "name": "1800_202310_bby19",
+  "version": "1.0.0",
+  "description": "An application that suggests whether the user should drive based on the car specs, road conditions, weather, and locations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JDMCK/1800_202310_BBY19.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JDMCK/1800_202310_BBY19/issues"
+  },
+  "homepage": "https://github.com/JDMCK/1800_202310_BBY19#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
