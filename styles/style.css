@@ -4,14 +4,19 @@
     --bs-nav-link-color: whitesmoke;
 }
 
-/* Searchbar Stylings */
-.searchbar {
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 1em;
+/* Footer Stylings */
+.footer {
+    align-items: end;
+    justify-content: end;
 }
-#searchButton {
-    margin-top: 1em;
+
+.github1 {
+    width: 3%;
+
+}
+#copyright {
+    display: inline-block;
+
 }
 
 /* Map Stylings */

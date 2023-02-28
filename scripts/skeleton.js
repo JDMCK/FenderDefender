@@ -1,7 +1,10 @@
 
 function loadSkeleton() {
     $('#navbar').load('../text/navbar.html');
-    $('#searchbar').load('../text/searchbar.html');
+    $('#footer').load('../text/footer.html');
+    $('#searchbar').load('../text/searchbar.html')
     $('#map').load('../text.googleMap.html');
+    $('#vehicle_info').load('../text/vehicle_info.html')
+    $('#vehicle_selector').load('../text/vehicle_selector.html')
 }
 loadSkeleton();
