@@ -4,21 +4,6 @@
     --bs-nav-link-color: whitesmoke;
 }
 
-/* Footer Stylings */
-.footer {
-    align-items: end;
-    justify-content: end;
-}
-
-.github1 {
-    width: 3%;
-
-}
-#copyright {
-    display: inline-block;
-
-}
-
 /* Map Stylings */
 #map {
     height: 400px; /* The height is 400 pixels */
