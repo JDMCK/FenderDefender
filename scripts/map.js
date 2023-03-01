@@ -1,6 +1,6 @@
 let from;
 let to;
-
+let apiKey = "API-KEY-GOES-HERE";
 
 // Initialize and add the map
 function initMap() {
@@ -32,7 +32,7 @@ function search() {
 
   // From
   const HttpFrom = new XMLHttpRequest();
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${from}&key=AIzaSyAvVBwD347tCmjaM9WzFeBD7W8iLWTdIXA`;
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${from}&key=${apiKey}`;
   HttpFrom.open("GET", url);
   HttpFrom.send();
 
@@ -43,7 +43,7 @@ function search() {
   }
   // To
   const HttpTo = new XMLHttpRequest();
-  const urlTo = `https://maps.googleapis.com/maps/api/geocode/json?address=${to}&key=AIzaSyAvVBwD347tCmjaM9WzFeBD7W8iLWTdIXA`;
+  const urlTo = `https://maps.googleapis.com/maps/api/geocode/json?address=${to}&key=${apiKey}`;
   HttpTo.open("GET", urlTo);
   HttpTo.send();
 
