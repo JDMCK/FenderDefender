@@ -1,4 +1,6 @@
+<!--Container Starts-->
 <div class="accordion" id="accordionExample">
+  <!--Accordion One Starts-->
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button
@@ -7,7 +9,8 @@
         data-bs-toggle="collapse"
         data-bs-target="#collapseOne"
         aria-expanded="true"
-        aria-controls="collapseOne">
+        aria-controls="collapseOne"
+      >
         Previously selected vehicle
       </button>
     </h2>
@@ -31,8 +34,8 @@
           <div class="card-body">
             <h5 class="card-title">Car Name: Lightning McQueen</h5>
             <p class="card-text">
-              Vehicle: 2006 - C6. R Corvette<br />Vehicle Type: Sport Sedan<br />Current
-              Tires: All Weather
+              Vehicle: 2006 - C6. R Corvette<br />Vehicle Type: <span id="#vehicle_type_here"></span><br />Current
+              Tires: <span id="vehicle_tires_here"></span><br> Current drivetrain: <span id="vehicle_drivetrain_here"></span>
             </p>
             <a href="#" class="btn btn-primary">Select this vehicle</a>
           </div>
@@ -40,6 +43,7 @@
       </div>
     </div>
   </div>
+  <!--Accordion One Ends/Accordion Two Starts-->
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingTwo">
       <button
@@ -50,7 +54,7 @@
         aria-expanded="false"
         aria-controls="collapseTwo"
       >
-      Choose a different vehicle
+        Choose a different vehicle
       </button>
     </h2>
     <div
@@ -66,31 +70,31 @@
               <option selected>Choose...</option>
               <option>Car1</option>
               <option>Car2</option>
-              <option>Car3</option>
-            </select><br>
+              <option>Car3</option></select
+            ><br />
 
             <!-- Button trigger modal -->
             <button
               type="button"
-              class="btn btn-primary"
+              class="btn btn-primary btn-sm"
               data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
+              data-bs-target="#ModalChange"
             >
               Change your vehicle
             </button>
 
-            <!-- Modal -->
+            <!-- Modal for changing vehicle-->
             <div
               class="modal fade"
-              id="exampleModal"
+              id="ModalChange"
               tabindex="-1"
-              aria-labelledby="exampleModalLabel"
+              aria-labelledby="ModalChangeLabel"
               aria-hidden="true"
             >
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
+                    <h5 class="modal-title" id="ModalChangeLabel">
                       You are changing your vehicle.
                     </h5>
                     <button
@@ -120,11 +124,60 @@
                 </div>
               </div>
             </div>
+            <!-- Modal for removing vehicle -->
+            <button
+              type="button"
+              class="btn btn-danger btn-sm"
+              data-bs-toggle="modal"
+              data-bs-target="#ModalRemove"
+            >
+              Remove this vehicle
+            </button>
+            <div
+              class="modal fade"
+              id="ModalRemove"
+              tabindex="-1"
+              aria-labelledby="ModalRemoveLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="ModalRemoveLabel">
+                      You are removing this selected vehicle.
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    Attention! Removing a vehicle is permanent and cannot be
+                    undone.
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Cancel
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                      I understand
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </form>
       </div>
     </div>
   </div>
+  <!--Accordion Two Ends/Accordion Three Starts-->
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingThree">
       <button
@@ -133,15 +186,17 @@
         data-bs-toggle="collapse"
         data-bs-target="#collapseThree"
         aria-expanded="false"
-        aria-controls="collapseThree">
-      Add a new vehicle
+        aria-controls="collapseThree"
+      >
+        Add a new vehicle
       </button>
     </h2>
     <div
       id="collapseThree"
       class="accordion-collapse collapse"
       aria-labelledby="headingThree"
-      data-bs-parent="#accordionExample">
+      data-bs-parent="#accordionExample"
+    >
       <div class="accordion-body">
         <style>
           .form-select {
@@ -152,30 +207,32 @@
           }
         </style>
         <div class="col-md-4">
-          <label for="inputState" class="form-label">Vehicle specifications</label>
+          <label for="inputState" class="form-label"
+            >Vehicle specifications</label
+          >
           <select
             class="form-select form-select-sm mb-3"
             aria-label=".form-select-lg example"
           >
-            <option selected>Please Select your type of vehicle.</option>
+            <option selected>Please select your type of vehicle.</option>
             <option value="1">Sedan</option>
             <option value="2">SUV</option>
             <option value="3">Sports Car</option>
             <option value="3">Truck</option>
             <option value="3">Van</option>
           </select>
-        
+
           <select
             class="form-select form-select-sm mb-3"
             aria-label=".form-select-lg example"
           >
-            <option selected>Please select your wheel type.</option>
+            <option selected>Please select your tire type.</option>
             <option value="1">All Seasons</option>
             <option value="2">All Weather</option>
             <option value="3">Summers</option>
             <option value="4">Winters</option>
           </select>
-        
+
           <select
             class="form-select form-select-sm mb-3"
             aria-label=".form-select-lg example"
@@ -186,7 +243,7 @@
             <option value="3">All Wheel Drive</option>
             <option value="4">4x4</option>
           </select>
-        
+
           <div class="col-12">
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
@@ -194,4 +251,6 @@
       </div>
     </div>
   </div>
+  <!--Accordion Three Ends-->
 </div>
+<!--End of Container div-->
