@@ -1,24 +1,3 @@
-function insertName() {
-    firebase.auth().onAuthStateChanged(user => {
-        // Check if a user is signed in:
-        if (user) {
-            // Do something for the currently logged-in user here: 
-            console.log(user.uid); //print the uid in the browser console
-            console.log(user.displayName);  //print the user name in the browser console
-            user_Name = user.displayName;
-
-            //method #1:  insert with html only
-            //document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
-            //method #2:  insert using jquery
-            $("#name-goes-here").text(user_Name); //using jquery
-
-        } else {
-            // No user is signed in.
-        }
-    });
-}
-insertName(); //run the function
-
 
 function insertNameFromFirestore(){
     // to check if the user is logged in:
@@ -28,40 +7,46 @@ function insertNameFromFirestore(){
            currentUser = db.collection("users").doc(user.uid); // will to to the firestore and go to the document of the user
            currentUser.get().then(userDoc=>{
                //get the user name
-               var userName= userDoc.data().name;
+               var userName = userDoc.data().name;
+               var vehicleType = userDoc.data().vehicle_type;  // get value of the "details" key
+               var vehicleTires = userDoc.data().vehicle_tires;    //get unique ID to each hike to be used for fetching right image
+               var vehicleDrivetrain = userDoc.data().vehicle_drivetrain;
                console.log(userName);
-               //$("#name-goes-here").text(userName); //jquery
-               document.getElementById("name-goes-here").innerText=userName;
+               $("#name-goes-here").text(userName); //jquery
+               $("#vehicle-type").text(vehicleType); //jquery
+               $("#vehicle-tires").text(vehicleTires); //jquery
+               $("#vehicle-drivetrain").text(vehicleDrivetrain); 
+            //    //$("#name-goes-here").text(userName); //jquery
            })    
        }    
     })
 }
 insertNameFromFirestore()
 
-function insertVehicleType() {
-    firebase.auth().onAuthStateChanged(user => {
-        // Check if a user is signed in:
-        if (user) {
-            // Do something for the currently logged-in user here: 
-            console.log(user.uid); //print the uid in the browser console
-            console.log(vehicle.type);  //print the user name in the browser console
-            console.log(vehicle.tire);
-            console.log(vehicle.drivetrian);
-            vehicle_type = "Summer";
-            vehicle_tire = vehicle.tire;
-            vehicle_drivetrian = vehicle.drivetrian;
 
-            //method #1:  insert with html only
-            //document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
-            //method #2:  insert using jquery
-            $("#vehicle_type_here").text(vehicle_type); //using jquery
-            $("#vehicle_tire_here").text(vehicle_tire);
-            $("#vehicle_drivetrain_here").text(vehicle_drivetrian);
+function writeVehicle() {
+    //define a variable for the collection you want to create in Firestore to populate data
+    var vehicleRef = db.collection('users/vehicle');
 
-        } else {
-            // No user is signed in.
-        }
+    vehicleRef.add({
+        name: "Lightning McQueen", //replace with your own vehicle
+        vehicle_type: "Sport Sedan",
+        vehicle_tires: "Summer",
+        vehicle_drivetrain: "Rear wheel drive",
+        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+    });
+    vehicleRef.add({
+        name: "Mater", //replace with your own vehicle
+        vehicle_type: "Truck",
+        vehicle_tires: "All Weather",
+        vehicle_drivetrain: "Front wheel drive",
+        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+    });
+    vehicleRef.add({
+        name: "Sally Carrera", //replace with your own vehicle
+        vehicle_type: "Sport Sedan",
+        vehicle_tires: "Summer",
+        vehicle_drivetrain: "Rear wheel drive",
+        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
     });
 }
-insertName(); //run the function
-
