@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <title>Fender Defender</title>
-    <meta name="fender defender App" content="My 1800 App">
+<title>About Us</title>
+
+<meta name="fender defender App" content="My 1800 App">
 
     <!------------------------>
     <!-- Required meta tags -->
     <!------------------------>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!------------------------------------------>
     <!-- Bootstrap Library CSS JS CDN go here -->
@@ -34,37 +33,54 @@
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/aboutus.css">
 </head>
-
 <body>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
 
-    <!-- our own navbar goes here -->
     <nav id="navbar"></nav>
+    <div class="header">
+		<h1>About Us</h1>
+    </div>
+	<div class="main">
+		<section class="mission">
+			<h2>Our Mission</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum risus vitae tincidunt tempor. Vivamus vel mauris ut dolor sagittis euismod. Nullam eget mi vel est luctus auctor eget nec ante. Sed id augue ut nunc euismod convallis vel sed turpis.</p>
+		</section>
+		<section class="history">
+			<h2>Our History</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum risus vitae tincidunt tempor. Vivamus vel mauris ut dolor sagittis euismod. Nullam eget mi vel est luctus auctor eget nec ante. Sed id augue ut nunc euismod convallis vel sed turpis.</p>
+			<img src="history.jpg" alt="Our History">
+		</section>
+		<section class="team">
+			<h2>Meet Our Team</h2>
+			<ul>
+				<li>
+					<img src="john.jpg" alt="John Smith">
+					<h3>Jesse McKenzie</h3>
+					<p>CEO</p>
+				</li>
+				<li>
+					<img src="jane.jpg" alt="Jane Doe">
+					<h3>Eric Chau</h3>
+					<p>COO</p>
+				</li>
+				<li>
+					<img src="bob.jpg" alt="Bob Johnson">
+					<h3>Ross Wong</h3>
+					<p>CTO</p>
+				</li>
+			</ul>
+		</section>
+        <div class="footer"></div>
+	</div>
 
-    <!-- the body of your page goes here -->
-    <!-- stuff -->
 
-    <div class="login">
-      <h1>Login</h1>
-  </div>
-  <div id="firebaseui-auth-container"></div>
-  <div id="loader">Loading...</div>
-
-    <!-- our own footer goes here-->
-    <nav id="footer"></nav>
-
-    <!---------------------------------------------->
+     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
-    <script src="../scripts/firebaseAPI_team19.js"></script>
+    <!-- <script src="../scripts/firebaseAPI_team19.js"></script> -->
     <script src="../scripts/skeleton.js"></script>
-    <script src="../scripts/authentication.js"></script>
+    <!-- <script src="../scripts/authentication.js"></script> -->
     <!-- <script src="./scripts/script.js"></script> -->
-
 </body>
-
 </html>
