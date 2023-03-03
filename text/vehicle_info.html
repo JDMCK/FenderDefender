@@ -32,9 +32,9 @@
         </style>
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Car Name: Lightning McQueen</h5>
+            <h5 class="card-title">Car Name: <span id="vehicle-name"></span></h5>
             <p class="card-text">
-              Vehicle: <span id="vehicle-title"><br />Vehicle Type: <span id="vehicle-type"></span><br />Current
+              Vehicle Type: <span id="vehicle-type"></span><br />Current
               Tires: <span id="vehicle-tires"></span><br> Current Drivetrain: <span id="vehicle-drivetrain"></span>
             </p>
             <a href="#" class="btn btn-primary">Select this vehicle</a>
@@ -66,12 +66,8 @@
       <div class="accordion-body">
         <form class="row g-3">
           <div class="col-md-4">
-            <select id="inputState" class="form-select">
-              <option selected>Choose...</option>
-              <option>Car1</option>
-              <option>Car2</option>
-              <option>Car3</option></select
-            ><br />
+            <div id="my-container"></div>
+            <br/>
 
             <!-- Button trigger modal -->
             <button
@@ -210,42 +206,46 @@
           <label for="inputState" class="form-label"
             >Vehicle specifications</label
           >
+          <div class="mb-3">
+            <input type="vehicle_name" id="vehicle_name" class="form-control" placeholder="Enter a nickname...">
+          </div>
           <select 
             class="form-select form-select-sm mb-3"
-            aria-label=".form-select-lg example"
+            aria-label=".form-select-lg example" input id="type" type="option"
           >
             <option selected>Please select your type of vehicle.</option>
-            <option value="1">Sedan</option>
-            <option value="2">SUV</option>
-            <option value="3">Sports Car</option>
-            <option value="3">Truck</option>
-            <option value="3">Van</option>
+            <option value="Sedan">Sedan</option>
+            <option value="SUV">SUV</option>
+            <option value="Sports Car">Sports Car</option>
+            <option value="Truck">Truck</option>
+            <option value="Van">Van</option>
           </select>
 
           <select 
             class="form-select form-select-sm mb-3"
             aria-label=".form-select-lg example"
+            input id="tires"
           >
             <option selected>Please select your tire type.</option>
-            <option value="1">All Seasons</option>
-            <option value="2">All Weather</option>
-            <option value="3">Summers</option>
-            <option value="4">Winters</option>
+            <option value="All Seasons">All Seasons</option>
+            <option value="All Weather">All Weather</option>
+            <option value="Summer">Summers</option>
+            <option value="Winter">Winters</option>
           </select>
 
           <select 
             class="form-select form-select-sm mb-3"
-            aria-label=".form-select-lg example"
+            aria-label=".form-select-lg example" input id="drivetrain"
           >
             <option selected>Please select your drivetrain.</option>
-            <option value="1">Front Wheel Drive</option>
-            <option value="2">Rear Wheel Drive</option>
-            <option value="3">All Wheel Drive</option>
-            <option value="4">4x4</option>
+            <option value="Front Wheel Drive">Front Wheel Drive</option>
+            <option value="Rear Wheel Drive">Rear Wheel Drive</option>
+            <option value="All Wheel Drive">All Wheel Drive</option>
+            <option value="4x4">4x4</option>
           </select>
 
           <div class="col-12">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" onclick="addVehicle()">Submit</button>
           </div>
         </div>
       </div>
