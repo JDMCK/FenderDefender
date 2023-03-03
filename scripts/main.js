@@ -77,8 +77,8 @@ function displayCardsDynamically(collection, containerId) {
     select.appendChild(placeholder);
   
     db.collection(collection).get()
-      .then(allHikes => {
-        allHikes.forEach(doc => {
+      .then(allvehicle => {
+        allvehicle.forEach(doc => {
           var title = doc.data().vehicle_name;
           const option = document.createElement('option');
           option.value = title;
@@ -91,7 +91,8 @@ function displayCardsDynamically(collection, containerId) {
       .catch(error => {
         console.error(error);
       });
-  }
+}
+displayCardsDynamically("vehicle", "my-container")
   
 
 function writeVehicle() {
