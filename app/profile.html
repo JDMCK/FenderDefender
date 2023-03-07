@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <title>Fender Defender</title>
-    <meta name="fender defender App" content="My 1800 App">
+<title>My Profile</title>
+
+<meta name="fender defender App" content="My 1800 App">
 
     <!------------------------>
     <!-- Required meta tags -->
     <!------------------------>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!------------------------------------------>
     <!-- Bootstrap Library CSS JS CDN go here -->
@@ -34,37 +33,47 @@
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="../styles/aboutus.css"> -->
     <link rel="stylesheet" href="../styles/style.css">
 </head>
-
 <body>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-
-    <!-- our own navbar goes here -->
     <nav id="navbar"></nav>
 
-    <!-- the body of your page goes here -->
-    <!-- stuff -->
+    <div class="container">
+        <h1>User Profile </h1>
+        <form>
+            <fieldset class="mb-3" id="personalInfoFields" disabled>
+                <div class="form-group">
+                    <label>User</label>
+                    <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Car</label>
+                    <input type="text" id="schoolInput" class="form-control" placeholder="Enter your school">
+                </div>
+                <div class="form-group">
+                    <label>City</label>
+                    <input type="text" id="cityInput" class="form-control" placeholder="Enter your city">
+                </div>
+            </fieldset>
+            <div class="d-flex justify-content-end mt-5">
+                <button onclick="editUserInfo()" type="button" class="btn btn-secondary">Edit</button>
+                <span style="width: 10px"></span>
+                <button onclick="saveUserInfo()" type="button" class="btn btn-info">Save</button>
+            </div>
+        </form>
+    </div>
 
-    <div class="login">
-      <h1>Login</h1>
-  </div>
-  <div id="firebaseui-auth-container"></div>
-  <div id="loader">Loading...</div>
+    <div class="footer"></div>
 
-    <!-- our own footer goes here-->
-    <nav id="footer"></nav>
-
-    <!---------------------------------------------->
+     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
     <script src="../scripts/firebaseAPI_team19.js"></script>
     <script src="../scripts/skeleton.js"></script>
-    <script src="../scripts/authentication.js"></script>
+    <!-- <script src="../scripts/authentication.js"></script> -->
     <!-- <script src="./scripts/script.js"></script> -->
+    <script src="../scripts/profile.js"></script>
 
 </body>
-
 </html>

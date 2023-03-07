@@ -1,0 +1,78 @@
+/* About Us Stylings */
+.header {
+    text-align: center;
+    padding: 20px;
+}
+
+.main {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(25%);
+    grid-template-rows: repeat(25%)
+}
+
+.navbar-nav {
+    --bs-nav-link-color: whitesmoke;
+}
+
+
+/* Searchbar Stylings */
+.searchbar {
+    margin: auto;
+    margin-top: 1em;
+    width: 90%;
+    z-index: 2;
+}
+
+#search-button {
+    margin-top: 1em;
+    z-index: 2;
+}
+
+/* General Stylings */
+.bg-primary {
+    background: #1C6E8C !important;
+}
+
+.text-primary {
+    color: white !important;
+}
+
+.jesse {
+    max-width: 25%;
+    max-height: 25%;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.eric {
+    max-width: 50%;
+    max-height: 50%;
+}
+
+h3 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+.team {
+    text-align: center;
+}
+
+.mission {
+    text-align: center;
+}
+
+.ross {
+    max-width: 25%;
+    max-height: 10%;
+    justify-content: center;
+    align-items: center;
+}
