@@ -1,6 +1,6 @@
 let from;
 let to;
-let apiKey = "AIzaSyAvVBwD347tCmjaM9WzFeBD7W8iLWTdIXA";
+let apiKey = "API HERE";
 
 // Initialize and add the map
 function initMap() {
