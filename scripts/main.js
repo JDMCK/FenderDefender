@@ -1,3 +1,4 @@
+var currentUser;  
 
 function insertNameFromFirestore(){
     // to check if the user is logged in:
@@ -22,7 +23,8 @@ function insertVehicleFromFirestore(){
     firebase.auth().onAuthStateChanged(user =>{
         if (user){
            console.log(user.uid); // let me to know who is the user that logged in to get the UID
-           currentUser = db.collection("users").doc(user.uid).collection('myVehicles'); // will to to the firestore and go to the document of the user
+           currentUser = db.collection("users");
+          //  .doc(user.uid).collection('myVehicles'); // will to to the firestore and go to the document of the user
            currentUser.get().then(vehicleList=>{
             vehicleList.forEach((doc)=>{ 
                //get the user name
@@ -81,7 +83,7 @@ function displayCardsDynamically(collection, containerId) {
     placeholder.value = "";
     placeholder.text = "Choose...";
     select.appendChild(placeholder);
-    var vehicleRef = db.collection('users').doc(user.uid).collection('myVehicles')
+    var vehicleRef = db.collection('users').doc(user.uid).collection('myVehicles');
 
     vehicleRef.get()
       .then(allvehicle => {
@@ -93,7 +95,12 @@ function displayCardsDynamically(collection, containerId) {
           const option = document.createElement('option');
           option.value = (title + "," + type + "," + tire + "," + dt);
           option.text = (title + ": " + type + " with " + tire + " tires and " + dt);
+          // console.log(option.value);
           select.appendChild(option);
+        });
+
+        select.addEventListener("click", (event) => {
+          updateUserData(event.target.value);
         });
         
         document.getElementById(containerId).appendChild(select);
@@ -132,28 +139,125 @@ function writeVehicle() {
     });
 }
 
-function updateUserData(optionValue) {
-    const [title, type, tire, dt] = optionValue.split(",");
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        var vehicleRef = db.collection('users').doc(user.uid).collection('myVehicles')
-
-      vehicleRef.get()
-        db.collection('users').doc(user.uid).collection('myVehicles').doc(vehicleDoc).update({
-          vehicle_name: title,
-          vehicle_type: type,
-          vehicle_tires: tire,
-          vehicle_drivetrain: dt,
-        }, { merge: true })
+function updateUserData(option) {
+  console.log(option);
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      const [title, type, tire, dt] = option.split(",");
+      db.collection("users").doc(user.uid).update({
+        vehicle_name: title,
+        vehicle_type: type,
+        vehicle_tires: tire,
+        vehicle_drivetrain: dt
+      }, { merge: true })
         .then(() => {
           console.log("User data successfully updated!");
+          window.location.assign("vehicle.html"); 
         })
         .catch(error => {
           console.error("Error updating user data: ", error);
         });
-      }
-    });
-  }
+    }
+  });
+}
+
+
+// Ask Jesse about localhost variable setter to apply that takes in the
+// selected option as the optionValue to be parsed
+// function updateUserData(option) {
+//   console.log(option);
+//   firebase.auth().onAuthStateChanged(function(user) {
+//     const [title, type, tire, dt] = option.split(",");
+//     if (user) {
+//       currentUser = db.collection("users").doc(user.uid);
+//       // currentUser.get().then(vehicleList => {
+//       //   vehicleList.forEach(doc => {
+//           currentUser.set({
+//             vehicle_name: title,
+//             vehicle_type: type,
+//             vehicle_tires: tire,
+//             vehicle_drivetrain: dt,
+// function updateUserData(option) {
+//   console.log(option);
+//   firebase.auth().onAuthStateChanged(function (user) {
+//     if (user) {
+//       const [title, type, tire, dt] = option.split(",");
+//       db.collection("users").doc(user.uid).update({
+//         vehicle_name: title,
+//         vehicle_type: type,
+//         vehicle_tires: tire,
+//         vehicle_drivetrain: dt
+//           }, { merge: true })
+//           .then(() => {
+//             console.log("User data successfully updated!");
+//           })
+//           .catch(error => {
+//             console.error("Error updating user data: ", error);
+//           });
+// }});
+//       }
+//       )
+//     }
+//   });
+// }
+
+
+
+
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&//
+// *** Accidentally made a vehicle information update function, to be implemented elsewhere ***///
+// function updateUserData(optionValue) {
+//   firebase.auth().onAuthStateChanged(function(user) {
+//     const [title, type, tire, dt] = optionValue.split(",");
+//     if (user) {
+//       currentUser = db.collection("users").doc(user.uid);v
+//       let tire = document.getElementById("tires").value;
+//       let type = document.getElementById("type").value;
+//       let drivetrain = document.getElementById("drivetrain").value;
+//       let nickname = document.getElementById("vehicle_name").value; 
+//       currentUser.collection("myVehicles").get().then(vehicleList => {
+//         vehicleList.forEach(doc => {
+//           doc.ref.update({
+//             vehicle_name: title,
+//             vehicle_type: type,
+//             vehicle_tires: tire,
+//             vehicle_drivetrain: dt,
+//           }, { merge: true })
+//           .then(() => {
+//             console.log("User data successfully updated!");
+//           })
+//           .catch(error => {
+//             console.error("Error updating user data: ", error);
+//           });
+//         });
+//       })
+//     }
+//   });
+// }
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&//
+
+
+// function updateUserData(optionValue) {
+//     firebase.auth().onAuthStateChanged(function(user) {
+//       const [title, type, tire, dt] = optionValue.split(",");
+//       if (user) {
+//         currentUser = db.collection("users");
+//         currentUser.get().then(vehicleList=>{
+//         vehicleList.forEach().update({
+//           vehicle_name: title,
+//           vehicle_type: type,
+//           vehicle_tires: tire,
+//           vehicle_drivetrain: dt,
+//         }, { merge: true })
+//         .then(() => {
+//           console.log("User data successfully updated!");
+//         })
+//         .catch(error => {
+//           console.error("Error updating user data: ", error);
+//         });
+//       })
+//     }});
+//   }
   
 
 // "db.collection('users').doc(user.uid).collection('myVehicles').doc(vehicleDoc)"   ".update()   ;  doc.id
