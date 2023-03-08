@@ -36,9 +36,53 @@
 
   <!-- Navbar -->
   <div id="navbar"></div>
-  <div><p>Hi there <span id="name-goes-here"></span></p></div>
-  <div id="car-icon"><img src="../images/favicon_io/android-chrome-192x192.png" alt=""></div>
-  <div id="vehicle_info"></div>
+  <div class="col-md-4">
+    <label for="inputState" class="form-label"
+      >Vehicle specifications</label
+    >
+    <div class="mb-3">
+      <input type="vehicle_name" id="vehicle_name" class="form-control" placeholder="Enter a nickname...">
+    </div>
+    <select 
+      class="form-select form-select-sm mb-3"
+      aria-label=".form-select-lg example" input id="type" type="option"
+    >
+      <option selected>Please select your type of vehicle.</option>
+      <option value="Sedan">Sedan</option>
+      <option value="SUV">SUV</option>
+      <option value="Sports Car">Sports Car</option>
+      <option value="Truck">Truck</option>
+      <option value="Van">Van</option>
+    </select>
+
+    <select 
+      class="form-select form-select-sm mb-3"
+      aria-label=".form-select-lg example"
+      input id="tires"
+    >
+      <option selected>Please select your tire type.</option>
+      <option value="All Seasons">All Seasons</option>
+      <option value="All Weather">All Weather</option>
+      <option value="Summer">Summers</option>
+      <option value="Winter">Winters</option>
+    </select>
+
+    <select 
+      class="form-select form-select-sm mb-3"
+      aria-label=".form-select-lg example" input id="drivetrain"
+    >
+      <option selected>Please select your drivetrain.</option>
+      <option value="Front Wheel Drive">Front Wheel Drive</option>
+      <option value="Rear Wheel Drive">Rear Wheel Drive</option>
+      <option value="All Wheel Drive">All Wheel Drive</option>
+      <option value="4x4">4x4</option>
+    </select>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary" onclick="addVehicle()">Submit</button>
+    </div>
+  </div>
+
 
 
   <!-- Footer -->
@@ -59,7 +103,7 @@
   <script src="../scripts/firebaseAPI_team19.js"></script>
   <!-- <script src="../scripts/authentication.js"></script> -->
     <script src="../scripts/skeleton.js"></script>
-    <script src="../scripts/main.js"></script>
+    <script src="../scripts/addVehicle.js"></script>
 
 </body>
 

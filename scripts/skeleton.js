@@ -5,6 +5,6 @@ function loadSkeleton() {
     $('#searchbar').load('../text/searchbar.html')
     $('#map').load('../text.googleMap.html');
     $('#vehicle_info').load('../text/vehicle_info.html')
-    $('#vehicle_selector').load('../text/vehicle_selector.html')
+    $('#add_vehicle').load('../text/new_vehicle_add.html')
 }
 loadSkeleton();

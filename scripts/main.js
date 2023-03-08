@@ -162,6 +162,10 @@ function updateUserData(option) {
 }
 
 
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// Code Testing
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 // Ask Jesse about localhost variable setter to apply that takes in the
 // selected option as the optionValue to be parsed
 // function updateUserData(option) {

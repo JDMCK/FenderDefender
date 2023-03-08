@@ -1,7 +1,26 @@
 <!--Container Starts-->
 <div class="accordion" id="accordionExample">
-  <!--Selected Car's information-->
-        <div class="accordion-body">
+  <!--Accordion One Starts-->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseOne"
+        aria-expanded="true"
+        aria-controls="collapseOne"
+      >
+        Previously selected vehicle
+      </button>
+    </h2>
+    <div
+      id="collapseOne"
+      class="accordion-collapse collapse show"
+      aria-labelledby="headingOne"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">
         <style>
           .g-3 {
             padding: 10px;
@@ -18,28 +37,13 @@
               Vehicle Type: <span id="vehicle-type"></span><br />Current
               Tires: <span id="vehicle-tires"></span><br> Current Drivetrain: <span id="vehicle-drivetrain"></span>
             </p>
-            <button type="button" class="btn btn-primary btn-sm">Edit</button>
-            <button type="button" class="btn btn-secondary btn-sm">Delete</button>
+            <a href="#" class="btn btn-primary">Select this vehicle</a>
           </div>
         </div>
       </div>
-
-      <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-          Dropdown link
-        </a>
-      
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-        <button class="btn btn-primary" type="submit"><a href="../text/new_vehicle_add.html"><img src="../images/icons8-plus-math-ios-16-glyph/icons8-plus-math-30.png" id="plusSign"></button>
-      </div>
-      
-
-
-  <!--Accordion One Starts-->
+    </div>
+  </div>
+  <!--Accordion One Ends/Accordion Two Starts-->
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingTwo">
       <button
