@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Current Vehicle</title>
+  <title>Fender Defender</title>
   <meta name="comp1800 template" content="My 1800 App" />
 
   <!-- Required meta tags -->
@@ -12,18 +12,6 @@
   <!-- Bootstrap Library CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
-
-    <!-------------------------------------------------------->
-    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
-    <!-------------------------------------------------------->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" /> -->
-
 
   <!-- Link to styles of your own -->
   <link rel="stylesheet" href="../styles/style.css" />
@@ -36,13 +24,16 @@
 
   <!-- Navbar -->
   <div id="navbar"></div>
-  <div><p>Hi there <span id="name-goes-here"></span></p></div>
-  <div id="car-icon"><img src="../images/favicon_io/android-chrome-192x192.png" alt=""></div>
-  <div id="vehicle_info"></div>
+  
+  <!-- Search Bar -->
+  <div id="searchbar"></div>
+  
+  <!-- Google API map -->
+  <div id="map"></div>
 
+  <!-- Post-Route Input -->
+  <div id="confirmRoute" style="display: none"></div>
 
-  <!-- Footer -->
- 
 
   <!---------------------------------------------->
   <!-- Your own JavaScript functions go here    -->
@@ -56,10 +47,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <!-- Link to scripts of your own -->
-  <script src="../scripts/firebaseAPI_team19.js"></script>
-  <!-- <script src="../scripts/authentication.js"></script> -->
-    <script src="../scripts/skeleton.js"></script>
-    <script src="../scripts/main.js"></script>
+  <script src="../scripts/skeleton.js"></script>
+  <script src="../scripts/map.js"></script>
+  <script src="../scripts/safetyRating.js"></script>
+  <script async="true" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvVBwD347tCmjaM9WzFeBD7W8iLWTdIXA&callback=initMap">
+  </script>
 
 </body>
 
