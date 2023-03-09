@@ -84,29 +84,6 @@
     opacity: 0.5 !important;   
 }
 
-/* For Ross pls dont touch */
-.login {
-    width: 100%;
-    align-items: center;
-    text-align: center;
-}
-
-/* About Us Stylings */
-.header {
-    text-align: center;
-    padding: 20px;
-}
-
-.main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
-}
-
-
 #car-icon {
     display: flex;
     align-items: center;
