@@ -34,7 +34,7 @@
     <!-------------------------------------------->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="../styles/aboutus.css"> -->
-    <link rel="stylesheet" href="../styles/aboutus.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
     <nav id="navbar"></nav>
@@ -57,9 +57,9 @@
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                         <!-- Profile picture upload button-->
-                        <form>
-                            <button class="btn btn-primary" input type="file" id="fileInput" onclick="uploadFile()">Upload New Image</button>
-                        </form>
+                        <button class="btn btn-primary" type="button" onclick="document.getElementById('fileInput').click()">Choose File</button>
+                        <input type="file" id="fileInput" style="display:none">
+                        <button class="btn btn-primary" type="button">Submit</button>
                     </div>
                 </div>
             </div>
