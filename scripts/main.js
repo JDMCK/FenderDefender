@@ -78,7 +78,7 @@ function displayCardsDynamically(collection, containerId) {
   firebase.auth().onAuthStateChanged(user =>{
     if(user) {  
   console.log("displaying cards in container:", containerId);
-    let select = document.createElement("select");
+    let select = document.createElement("ul");
     let placeholder = document.createElement("option");
     placeholder.value = "";
     placeholder.text = "Choose...";
@@ -101,6 +101,7 @@ function displayCardsDynamically(collection, containerId) {
 
         select.addEventListener("click", (event) => {
           updateUserData(event.target.value);
+          //save as local variable.
         });
         
         document.getElementById(containerId).appendChild(select);
@@ -144,6 +145,8 @@ function updateUserData(option) {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       const [title, type, tire, dt] = option.split(",");
+      console.log(option);
+      console.log(type);
       db.collection("users").doc(user.uid).update({
         vehicle_name: title,
         vehicle_type: type,
