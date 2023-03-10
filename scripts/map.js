@@ -1,6 +1,6 @@
 let from;
 let to;
-const apiKey = 'API HERE';
+const apiKey = 'AIzaSyAvVBwD347tCmjaM9WzFeBD7W8iLWTdIXA';
 
 // Initialize and add the map
 function initMap() {
@@ -45,7 +45,7 @@ window.onload = () => {
     searchbar.style.display = 'block';
     initMap();
   };
-  
+
 }
 
 function search() {
