@@ -6,12 +6,12 @@ function addVehicle() {
         if (user){
         console.log(user.uid); 
         currentUser = db.collection("users").doc(user.uid);
-        let tire = document.getElementById("tires").value;
-        let type = document.getElementById("type").value;
-        let drivetrain = document.getElementById("drivetrain").value;
+        let tire = document.getElementById("vehicle_tires").value;
+        let type = document.getElementById("vehicle_type").value;
+        let drivetrain = document.getElementById("vehicle_drivetrain").value;
         let nickname = document.getElementById("vehicle_name").value;          
         var vehicleRef = db.collection('users').doc(user.uid).collection('myVehicles');
-        vehicleRef.add({           
+        vehicleRef.set({           
             vehicle_name: nickname,
             vehicle_type: type,
             vehicle_tires: tire,

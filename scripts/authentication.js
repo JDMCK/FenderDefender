@@ -17,12 +17,15 @@ var uiConfig = {
       //------------------------------------------------------------------------------------------
       var user = authResult.user;                            // get the user object from the Firebase authentication database
       if (authResult.additionalUserInfo.isNewUser) {         //if new user
+        let username = user.displayName.replace(" ", ",");
+        const [fname, lname] = username.split(",");
           db.collection("users").doc(user.uid).set({         //write to firestore. We are using the UID for the ID in users collection
-                 name: user.displayName,                    //"users" collection
+                 fname: fname,                    //"users" collection
+                 lname: lname,
                  email: user.email,
           }).then(function () {
                  console.log("New user added to firestore");
-                 window.location.assign("profile.html");       //re-direct to index.html after signup
+                 window.location.assign("editProfile.html");       //re-direct to index.html after signup
           }).catch(function (error) {
                  console.log("Error adding new user: " + error);
           });
