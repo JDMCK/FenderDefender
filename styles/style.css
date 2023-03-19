@@ -84,24 +84,44 @@
     opacity: 0.5 !important;   
 }
 
-/* For Ross pls dont touch */
-.login {
-    width: 100%;
+#car-icon {
+    display: flex;
     align-items: center;
-    text-align: center;
-}
-
-/* About Us Stylings */
-.header {
-    text-align: center;
-    padding: 20px;
-}
-
-.main {
-    max-width: 800px;
+    justify-content: center;
     margin: 0 auto;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
+}
+
+#plusSign {
+    max-width: 75%;
+    max-height: 75%;
+    filter: invert(1);
+}
+
+a { color: inherit; } 
+
+option {
+    font-weight: bolder;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 1px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff; /* here */
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px  rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,0);
 }

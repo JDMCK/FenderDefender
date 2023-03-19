@@ -34,7 +34,8 @@
     <!-------------------------------------------->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="../styles/aboutus.css"> -->
-    <link rel="stylesheet" href="../styles/aboutus.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/profile.css">
 </head>
 <body>
     <nav id="navbar"></nav>
@@ -57,9 +58,9 @@
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                         <!-- Profile picture upload button-->
-                        <form>
-                            <button class="btn btn-primary" input type="file" id="fileInput" onclick="uploadFile()">Upload New Image</button>
-                        </form>
+                        <button class="btn btn-primary" type="button" onclick="document.getElementById('fileInput').click()">Choose File</button>
+                        <input type="file" id="fileInput" style="display:none">
+                        <button class="btn btn-primary" type="button">Submit</button>
                     </div>
                 </div>
             </div>
@@ -70,10 +71,8 @@
                     <div class="card-body">
                         <form>
                             <!-- Form Group (username)-->
-                            <div class="mb-3">
-                                <label class="small mb-1" for="inputUsername">Username</label>
-                                <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username">
-                            <!-- Form Row-->
+                            
+                           
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (first name)-->
                                 <div class="col-md-6">
@@ -100,7 +99,7 @@
                                 <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address">
                             </div>
                             <!-- Save changes button-->
-                            <button class="btn btn-primary" type="button">Save Changes</button>
+                            <button class="btn btn-primary" type="button" onclick="userProfile()">Save Changes</button>
                         </form>
                     </div>
                 </div>
@@ -117,7 +116,8 @@
     <script src="../scripts/skeleton.js"></script>
     <!-- <script src="../scripts/authentication.js"></script> -->
     <!-- <script src="./scripts/script.js"></script> -->
-    <script src="../scripts/profile.js"></script>
+    <!-- <script src="../scripts/profile.js"></script> -->
+    <script src="../scripts/editProfile.js"></script>
 
 </body>
 </html>

@@ -1,21 +1,17 @@
-function uploadFile() {
-    const input = document.getElementById('fileInput');
-    const file = input.files[0];
-  
-    const formData = new FormData();
-    formData.append('file', file);
-  
-    fetch('/upload', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Upload successful!');
-      console.log(data);
-    })
-    .catch(error => {
-      console.error('Upload failed!');
-      console.error(error);
-    });
+// Get the file input and submit button elements
+const fileUpload = document.getElementById('file-upload');
+const submitButton = document.getElementById('submit-button');
+
+// Add a click event listener to the submit button
+submitButton.addEventListener('click', function() {
+  // Check if a file has been selected
+  if (fileUpload.files.length > 0) {
+    // Get the selected file
+    const file = fileUpload.files[0];
+    
+    // Do something with the file (e.g. upload it to a server)
+    // ...
+  } else {
+    alert('Please select a file to upload');
   }
+});
