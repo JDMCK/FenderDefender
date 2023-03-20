@@ -1,4 +1,4 @@
-const weatherAPIKey = '5ea5694c9c5f9ff5f18b88bd82c82ae6';
+const weatherAPIKey = '';
 
 window.onload = () => {
     ratingDisplay = document.getElementById('rating-display');
@@ -20,6 +20,7 @@ function getWeather() {
     Http.open("GET", url, false);
     Http.send();
 
+    // Commented out because ^ async set to false
     // Http.onreadystatechange = (e) => {
     //     if (Http.readyState == 4 && Http.status == 200) {
     return Http.responseText;
@@ -31,13 +32,13 @@ function calcRating() {
     const weather = JSON.parse(getWeather()).current;
 
     // Weighted decision matrix
-    const Rating = {
+    const ConditionsRating = {
         weights: {
-            "visibility": (x) => x * (x * x) / 100, // Exponential weight because visibility matters less the more you have
-            dark: (x) => x * 0.5,
-            temperature: (x) => x * 0.5,
-            windSpeed: (x) => x,
-            percipitation: (x) => x * 0.6,
+            visibility: (x) => x * (x * x) / 100, // Exponential weight because visibility matters less the more you have
+            dark: (x) => x * 0.6,
+            temperature: (x) => x,
+            windSpeed: (x) => x * 0.4,
+            percipitation: (x) => x,
             //alerts: (x) => x * 0.4
         },
         values: {
@@ -48,20 +49,21 @@ function calcRating() {
             percipitation: percipitation(weather.weather),
             //alerts: weather.alerts.length > 0 ? 10 : 0
         },
-        worstRating: 36,
+        worstRating: 40,
         rating: 0
     }
 
-    const weights = Object.values(Rating)[0];
-    const values = Object.values(Rating)[1];
+    const weights = Object.values(ConditionsRating)[0];
+    const values = Object.values(ConditionsRating)[1];
 
     for (let i = 0; i < Object.values(values).length; i++) {
-        Rating.rating += Object.values(weights)[i](Object.values(values)[i]);
+        ConditionsRating.rating += Object.values(weights)[i](Object.values(values)[i]);
     }
-    ratingDisplay.innerHTML = Rating.rating;
+    ratingDisplay.innerHTML = ConditionsRating.rating;
     console.log(weather);
-    console.log(Rating);
-    spinNeedle(Rating);
+    console.log(ConditionsRating);
+    const VehicleRating = getVehicleRating(ConditionsRating);
+    spinNeedle(ConditionsRating, VehicleRating);
 }
 
 function percipitation(weather) {
@@ -80,13 +82,27 @@ function percipitation(weather) {
     }
 }
 
-function spinNeedle(rating) {
-    let bias = 2;
-    let value = rating.rating * bias / rating.worstRating;
+function spinNeedle(conditionsRating, vehicleRating) {
+    const bias = 0.5; // total * bias = highest meter pos
+    let value = (conditionsRating.rating + vehicleRating) / (conditionsRating.worstRating * bias);
     value = value * 180 - 90;
     needle.style.rotate = value.toString() + 'deg';
 }
 
-function getVehicleRating() {
-    
+function getVehicleRating(conditionsRating) {
+    const vehicle = localStorage.getItem('vehicle');
+    if (vehicle == null) return;
+
+    let vehicleRating = 0;
+
+    if (vehicle.type == 'SUV' || vehicle.type == 'Truck') vehicleRating += 1;
+    if (vehicle.tire == 'Summer' && conditionsRating.values.temperature == 10) vehicleRating += 0;
+    if (vehicle.tire == 'All Weather' && conditionsRating.values.temperature == 10) vehicleRating += 3;
+    if (vehicle.tire == 'Winter' && conditionsRating.values.temperature == 10) vehicleRating += 6;
+    if (vehicle.drivetrain == 'Front Wheel Drive' && (conditionsRating.values.temperature == 10
+        || conditionsRating.values.percipitation == 8)) vehicleRating += 1;
+    if ((vehicle.drivetrain == 'All Wheel Drive' || vehicle.drivetrain == '4x4') &&
+        (conditionsRating.values.temperature == 10 || conditionsRating.values.percipitation == 8)) vehicleRating += 3;
+
+    return vehicleRating;
 }

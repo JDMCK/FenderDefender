@@ -1,6 +1,6 @@
 let from;
 let to;
-const apiKey = 'AIzaSyAvVBwD347tCmjaM9WzFeBD7W8iLWTdIXA';
+const apiKey = '';
 
 // Initialize and add the map
 function initMap() {

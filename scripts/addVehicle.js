@@ -11,7 +11,7 @@ function addVehicle() {
         let drivetrain = document.getElementById("vehicle_drivetrain").value;
         let nickname = document.getElementById("vehicle_name").value;          
         var vehicleRef = db.collection('users').doc(user.uid).collection('myVehicles');
-        vehicleRef.set({           
+        vehicleRef.add({           
             vehicle_name: nickname,
             vehicle_type: type,
             vehicle_tires: tire,
