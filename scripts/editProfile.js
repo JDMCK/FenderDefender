@@ -67,5 +67,3 @@ function populateUserInfo() {
 
 //call the function to run it 
 populateUserInfo();
-
-
