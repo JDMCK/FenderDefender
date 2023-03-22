@@ -27,7 +27,7 @@ function addVehicle() {
                 last_updated: firebase.firestore.FieldValue.serverTimestamp(),  //current system time           
             }).then(function () {
                 console.log("New vehicle added to firestore");
-                currentUser.set({
+                currentUser.update({
                     vehicle_name: nickname,
                     vehicle_type: type,
                     vehicle_tires: tire,
