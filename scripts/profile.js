@@ -1,17 +1,44 @@
-// Get the file input and submit button elements
-const fileUpload = document.getElementById('file-upload');
-const submitButton = document.getElementById('submit-button');
+function editUserInfo() {
+  //Enable the form fields
+  document.getElementById('personalInfoFields').disabled = false;
+}var imagefile = "./images/elmo.jpg";
 
-// Add a click event listener to the submit button
-submitButton.addEventListener('click', function() {
-  // Check if a file has been selected
-  if (fileUpload.files.length > 0) {
-    // Get the selected file
-    const file = fileUpload.files[0];
-    
-    // Do something with the file (e.g. upload it to a server)
-    // ...
-  } else {
-    alert('Please select a file to upload');
-  }
-});
+      function addFileChooserListener() {
+          console.log("inside add File chooser listener");
+          const fileInput = document.getElementById("mypic-input"); // pointer #1
+          const image = document.getElementById("mypic-goes-here"); // pointer #2
+          image.src = imagefile;
+          //attach listener to input file
+          //when this file changes, do something
+          fileInput.addEventListener('change', function (e) {
+              console.log("inside file chooser event handler!")
+              //the change event returns a file "e.target.files[0]"
+              var imagefile = e.target.files[0];
+              var blob = URL.createObjectURL(e.target.files[0]);
+
+              //change the DOM img element source to point to this file
+              image.src = blob; //assign the "src" property of the "img" tag
+          })
+      }
+      addFileChooserListener();
+
+      var imagefile = "./images/elmo.jpg";
+
+function addFileChooserListener() {
+       console.log("inside add File chooser listener");
+       const fileInput = document.getElementById("mypic-input"); // pointer #1
+       const image = document.getElementById("mypic-goes-here"); // pointer #2
+       image.src = imagefile;
+       //attach listener to input file
+       //when this file changes, do something
+       fileInput.addEventListener('change', function (e) {
+           console.log("inside file chooser event handler!")
+          //the change event returns a file "e.target.files[0]"
+           var imagefile = e.target.files[0];
+           var blob = URL.createObjectURL(e.target.files[0]);
+
+           //change the DOM img element source to point to this file
+           image.src = blob; //assign the "src" property of the "img" tag
+       })
+   }
+addFileChooserListener();
