@@ -35,6 +35,25 @@
     z-index: -1;
 }
 
+/* Circle Car Button Stylings */
+#circle-btn {
+    width: 65px;
+    height: 65px;
+    border-radius: 100%;
+    background-color: #5216d1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 88%;
+    left: 77%;
+}
+
+#circle-btn img {
+    width: 40px;
+    filter: invert();
+}
+
 /* Confirm Button Stylings */
 #confirm-route {
     position: fixed;
@@ -48,6 +67,7 @@
     width: 90px;
     margin: 10px;
 }
+
 #cancel-btn {
     width: 90px;
     margin: 10px;
@@ -57,6 +77,7 @@
     width: 90px;
     margin: 10px;
 }
+
 #back-btn {
     width: 90px;
     margin: 10px;
@@ -66,6 +87,7 @@
     width: 90px;
     margin: 10px;
 }
+
 #cancel-safety-modal {
     width: 90px;
     margin: 10px;
@@ -100,9 +122,9 @@
     left: 50%;
     top: 5em;
     transform: translateX(-50%);
-  }
-  
-  .mask-mid {
+}
+
+.mask-mid {
     border-radius: 100%;
     width: 200px;
     height: 200px;
@@ -110,9 +132,9 @@
     top: 20px;
     left: 20px;
     background-color: white;
-  }
-  
-  .ball {
+}
+
+.ball {
     width: 24px;
     height: 24px;
     background-color: rgb(252, 53, 53);
@@ -123,9 +145,9 @@
     border: 2px solid white;
     transform-origin: 12px 122px;
     rotate: -90deg;
-  }
-  
-  .ball-fill {
+}
+
+.ball-fill {
     border-radius: 100%;
     border-top: 120px solid rgb(252, 53, 53);
     border-left: 120px solid rgb(252, 53, 53);
@@ -133,17 +155,17 @@
     border-right: 120px solid black;
     position: absolute;
     rotate: -135deg;
-  }
-  
-  .mask-bot {
+}
+
+.mask-bot {
     width: 240px;
     height: 120px;
     background-color: white;
     position: absolute;
     top: 120px;
-  }
-  
-  .right-circle {
+}
+
+.right-circle {
     border-radius: 100%;
     width: 20px;
     height: 20px;
@@ -151,9 +173,9 @@
     position: absolute;
     left: 220px;
     top: 110px;
-  }
-  
-  .left-circle {
+}
+
+.left-circle {
     border-radius: 100%;
     width: 20px;
     height: 20px;
@@ -161,8 +183,8 @@
     position: absolute;
     right: 220px;
     top: 110px;
-  }
-  
+}
+
 /* Safety Rating Table Stylings */
 #weather-info {
     margin-left: 0.5em;
@@ -180,6 +202,62 @@
     transform: translateX(-50%);
 }
 
+/* Add New Vehicle Stylings */
+#new-vehicle-form {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 2em;
+    text-align: center;
+}
+
+.spec-icon {
+    width: 50px;
+    margin: 10px;
+}
+
+#add-new-vehicle-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-color: #5216d1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 88%;
+    left: 77%;
+}
+#add-new-vehicle-btn img {
+    width: 25px;
+    filter: invert();
+}
+
+#change-vehicle-dropdown {
+    margin: 20px;
+}
+
+#vehicle-info-card {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.change-current-vehicle {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+#car-name {
+    margin: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#vehicle-icon {
+    width: 175px;
+    margin: 0 auto;
+    display: block;
+}
+
 /* General Stylings */
 .bg-primary {
     background: #5216d1 !important;
@@ -195,7 +273,7 @@
 }
 
 .btn-primary:disabled {
-    opacity: 0.5 !important;   
+    opacity: 0.5 !important;
 }
 
 #car-icon {
@@ -211,10 +289,8 @@
     filter: invert(1);
 }
 
-a { color: inherit; } 
-
-option {
-    font-weight: bolder;
+a {
+    color: inherit;
 }
 
 .dropdown-menu {
@@ -230,12 +306,13 @@ option {
     font-size: 14px;
     text-align: left;
     list-style: none;
-    background-color: #fff; /* here */
+    background-color: #fff;
+    /* here */
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     border: 1px solid #ccc;
-    border: 1px  rgba(0,0,0,.15);
+    border: 1px rgba(0, 0, 0, .15);
     border-radius: 4px;
-    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
-    box-shadow: 0 6px 12px rgba(0,0,0,0);
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0);
 }

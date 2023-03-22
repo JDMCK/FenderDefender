@@ -29,6 +29,7 @@ window.onload = () => {
   searchbarTo = document.getElementById('searchbar-to');
   searchbarTo.value = "mei secondary abbotsford";
 
+  $('#circle-btn').popover();
 
   // Post search button click
   confirmRoute = document.getElementById('confirm-route');
