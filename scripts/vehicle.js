@@ -1,58 +1,75 @@
-var currentUser;  
+var currentUser;
 
-function insertNameFromFirestore(){
-    // to check if the user is logged in:
-    firebase.auth().onAuthStateChanged(user =>{
-        if (user){
-           console.log(user.uid); // let me to know who is the user that logged in to get the UID
-           currentUser = db.collection("users").doc(user.uid); // will to to the firestore and go to the document of the user
-           currentUser.get().then(userDoc=>{
-               //get the user name
-               var userName = userDoc.data().name;
-               console.log(userName);
-               $("#name-goes-here").text(userName); //jquery
+// Populates the vehicle information section with current vehicle
+function populateVehicleInfo() {
+  firebase.auth().onAuthStateChanged(user => {
+      // Check if user is signed in:
+      if (user) {
 
-           }) 
-       }    
-    })
-}
-insertNameFromFirestore()
+        var vehicleCount;
 
-function insertVehicleFromFirestore(){
-    // to check if the user is logged in:
-    firebase.auth().onAuthStateChanged(user =>{
-        if (user){
-           console.log(user.uid); // let me to know who is the user that logged in to get the UID
-           currentUser = db.collection("users");
-          //  .doc(user.uid).collection('myVehicles'); // will to to the firestore and go to the document of the user
-           currentUser.get().then(vehicleList=>{
-            vehicleList.forEach((doc)=>{ 
-               //get the user name
-               // <<.example insert here.>> .doc.id
-               var vehicleName = doc.data().vehicle_name;
-               var vehicleType = doc.data().vehicle_type;  // get value of the "details" key
-               var vehicleTires = doc.data().vehicle_tires;    //get unique ID to each hike to be used for fetching right image
-               var vehicleDrivetrain = doc.data().vehicle_drivetrain;
-               $("#vehicle-name").text(vehicleName); //jquery
-               $("#vehicle-type").text(vehicleType); //jquery
-               $("#vehicle-tires").text(vehicleTires); //jquery
-               $("#vehicle-drivetrain").text(vehicleDrivetrain);})
-           }) 
-       }    
-    })
-}
-insertVehicleFromFirestore()
+        db.collection('users').doc(user.uid).collection('myVehicles')
+        .get().then(vehicles => {
+          vehicleCount = vehicles.size;
+        
+          if (vehicleCount == 0) {
+            $('#vehicle_info').load('../text/no_vehicles.html');
+          } else {
+            $('#vehicle_info').load('../text/vehicle_info.html');
+          }
+          
+          
+          //go to the correct user document by referencing to the user uid
+          currentUser = db.collection("users").doc(user.uid)
+          //get the document for current user.
+          currentUser.get()
+          .then(userDoc => {
+                  //get the data fields of the user
+                  var vehicle_name = userDoc.data().vehicle_name;
+                  var vehicle_type = userDoc.data().vehicle_type;
+                  var vehicle_tires = userDoc.data().vehicle_tires;
+                  var vehicle_drivetrain = userDoc.data().vehicle_drivetrain;
+                  
+                  //if the data fields are not empty, then write them in to the form.
+                  if (vehicle_name != null) {
+                      // document.getElementById("vehicle-name").value = vehicle_name;
+                      $("#vehicle-name").text(vehicle_name);
+                    }
+                  if (vehicle_type != null) {
+                    $("#vehicle-type").text(vehicle_type);
+                    $("#vehicle-icon").attr('src', '../images/sedan.png');
+                    if (vehicle_type == 'Sedan') $("#vehicle-icon").attr('src', '../images/sedan.png');
+                    if (vehicle_type == 'SUV') $("#vehicle-icon").attr('src', '../images/suv.png');
+                    if (vehicle_type == 'Truck') $("#vehicle-icon").attr('src', '../images/pickup.png');
+                    if (vehicle_type == 'Sports Car') $("#vehicle-icon").attr('src', '../images/ferrari.png');
+                  } 
+                  if (vehicle_tires != null) {
+                    $("#vehicle-tires").text(vehicle_tires);
+                  }
+                  if (vehicle_drivetrain != null) {
+                    $("#vehicle-drivetrain").text(vehicle_drivetrain);
+                  }
+                })
+              });
+      } else {
+          // No user is signed in.
+          console.log ("No user is signed in");
+        }
+      });
+    }
 
+//call the function to run it 
+populateVehicleInfo();
 
-//Function adds a new vehicle to the collection.//
+// Function adds a new vehicle to the collection
 function addVehicle() {
     firebase.auth().onAuthStateChanged(user =>{
         if (user){
         console.log(user.uid); 
         currentUser = db.collection("users").doc(user.uid);
-        let tire = document.getElementById("tires").value;
-        let type = document.getElementById("type").value;
-        let drivetrain = document.getElementById("drivetrain").value;
+        let tire = document.getElementById("vehicle_tires").value;
+        let type = document.getElementById("vehicle_type").value;
+        let drivetrain = document.getElementById("vehicle_drivetrain").value;
         let nickname = document.getElementById("vehicle_name").value;          
         var vehicleRef = db.collection('users').doc(user.uid).collection('myVehicles');
         vehicleRef.add({           
@@ -73,17 +90,18 @@ function addVehicle() {
  return false;
 })}
 
-// ******To change current database call*******
+// Grabs vehicle info from firestore to display in vehicle card upon changing vehicle
 function displayCardsDynamically(collection, containerId) {
   firebase.auth().onAuthStateChanged(user =>{
     if(user) {  
-  console.log("displaying cards in container:", containerId);
+
     let select = document.createElement("ul");
     let placeholder = document.createElement("option");
     placeholder.value = "";
     placeholder.text = "Choose...";
     select.appendChild(placeholder);
-    var vehicleRef = db.collection('users').doc(user.uid).collection('myVehicles');
+
+    var vehicleRef = db.collection('users').doc(user.uid).collection(collection);
 
     vehicleRef.get()
       .then(allvehicle => {
@@ -101,7 +119,13 @@ function displayCardsDynamically(collection, containerId) {
 
         select.addEventListener("click", (event) => {
           updateUserData(event.target.value);
-          //save as local variable.
+          let vehiclObj = {
+            title: title,
+            type: type,
+            tire: tire,
+            drivetrain: dt
+          }
+          localStorage.setItem('vehicle', JSON.stringify(vehiclObj))
         });
         
         document.getElementById(containerId).appendChild(select);
@@ -109,8 +133,10 @@ function displayCardsDynamically(collection, containerId) {
       .catch(error => {
         console.error(error);
       });
+} else {
+  console.log('No user signed in.')
 }})}
-displayCardsDynamically("vehicle", "my-container")
+displayCardsDynamically("myVehicles", "my-container")
   
 
 function writeVehicle() {
@@ -140,8 +166,8 @@ function writeVehicle() {
     });
 }
 
+// 
 function updateUserData(option) {
-  console.log(option);
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       const [title, type, tire, dt] = option.split(",");

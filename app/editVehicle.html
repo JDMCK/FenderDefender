@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Current Vehicle</title>
+  <title>Edit Vehicle</title>
   <meta name="comp1800 template" content="My 1800 App" />
 
   <!-- Required meta tags -->
@@ -36,11 +36,47 @@
 
   <!-- Navbar -->
   <div id="navbar"></div>
+  <div id="new-vehicle-form">
+    <label for="inputState" class="form-label"><h2>Vehicle specifications</h2></label>
+    <img src="../images/tag.png" alt="nametag" class="spec-icon">
+    <div class="mb-3">
+      <input type="vehicle_name" id="vehicle_name" class="form-control" placeholder="Enter a nickname...">
+    </div>
 
+    <img src="../images/car.png" alt="car" class="spec-icon">
+    <select class="form-select form-select-sm mb-3" aria-label=".form-select-lg example" input id="vehicle_type"
+      type="option">
+      <option selected disabled>Please select your type of vehicle</option>
+      <option value="Sedan">Sedan</option>
+      <option value="SUV">SUV</option>
+      <option value="Sports Car">Sports Car</option>
+      <option value="Truck">Truck</option>
+      <option value="Van">Van</option>
+    </select>
 
+    <img src="../images/wheel.png" alt="tire" class="spec-icon">
+    <select class="form-select form-select-sm mb-3" aria-label=".form-select-lg example" input id="vehicle_tires">
+      <option selected disabled>Please select your tire type</option>
+      <option value="All Seasons">All Seasons</option>
+      <option value="All Weather">All Weather</option>
+      <option value="Summer">Summers</option>
+      <option value="Winter">Winters</option>
+    </select>
 
-  <!-- Menu items -->
-  <div id="vehicle_info"></div>
+    <img src="../images/all-wheel-drive.png" alt="drivetrain" class="spec-icon">
+    <select class="form-select form-select-sm mb-3" aria-label=".form-select-lg example" input id="vehicle_drivetrain">
+      <option selected disabled>Please select your drivetrain</option>
+      <option value="Front Wheel Drive">Front Wheel Drive</option>
+      <option value="Rear Wheel Drive">Rear Wheel Drive</option>
+      <option value="All Wheel Drive">All Wheel Drive</option>
+      <option value="4x4">4x4</option>
+    </select>
+
+    <div class="col-12 text-center">
+      <button type="submit" class="btn btn-primary" onclick="editVehicle()">Submit</button>
+    </div>
+  </div>
+
 
 
   <!-- Footer -->
@@ -61,7 +97,8 @@
   <script src="../scripts/firebaseAPI_team19.js"></script>
   <!-- <script src="../scripts/authentication.js"></script> -->
   <script src="../scripts/skeleton.js"></script>
-  <script src="../scripts/vehicle.js"></script>
+  <script src="../scripts/editVehicle.js"></script>
+  <!-- <script src="../scripts/editProfile.js"></script> -->
 
 </body>
 
