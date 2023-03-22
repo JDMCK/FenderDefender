@@ -29,6 +29,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
     <!-------------------------------------------->
     <!-- Other libraries and styles of your own -->
@@ -61,10 +62,9 @@
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                         <!-- Profile picture upload button-->
-                        <button class="btn btn-primary" type="button"
-                            onclick="document.getElementById('fileInput').click()">Choose File</button>
-                        <input type="file" id="fileInput" style="display:none">
-                        <button class="btn btn-primary" type="button" onclick="upload()">Submit</button>
+                        <div class="container text-center py-3">
+                            <input type="file" id="mypic-input" accept="image/*" />
+                    </div>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,11 @@
                                     placeholder="Enter your email address">
                             </div>
                             <!-- Save changes button-->
-                            <button class="btn btn-primary" type="button" onclick="userProfile()">Save Changes</button>
+                            <div class="d-flex justify-content-end mt-5">
+                                <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
+                                <span style="width: 10px"></span>
+                                <button type="button" class="btn btn-primary" onclick="saveUserInfo()">Save</button>
+                            </div>
                         </form>
                     </div>
                 </div>
