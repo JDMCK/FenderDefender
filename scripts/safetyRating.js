@@ -1,10 +1,28 @@
-const weatherAPIKey = '';
+const weatherAPIKey = '5ea5694c9c5f9ff5f18b88bd82c82ae6';
 
 window.onload = () => {
     ratingDisplay = document.getElementById('rating-display');
     ball = document.getElementById('ball');
     ballFill = document.getElementById('ball-fill');
-    slider = document.getElementById("slider");
+    slider = document.getElementById('slider');
+
+    backBtn = document.getElementById('back-btn').onclick = () => {
+        window.location.href = './map.html';
+    }
+    driveBtn = document.getElementById('drive-btn').onclick = () => {
+        console.log('modal time!')
+        $('#modal').modal('show');
+    };
+    
+    modalCancelBtn = document.getElementById('cancel-safety-modal').onclick = () => {
+        $('#modal').modal('hide');
+    }
+    
+    modalConfirmBtn = document.getElementById('confirm-safety-modal').onclick = () => {
+        const param = new URL(window.location.href).searchParams.get('formattedAddress');
+        const url = 'https://www.google.com/maps/dir/' + param;
+        window.location.href = url;
+    }
     calcRating();
 }
 
@@ -100,6 +118,27 @@ function getFinalRating(conditionsRating, vehicleRating) {
     return value;
 }
 
+// Calculates vehicle safety rating from vehicle info in local storage
+// takes weather conditions rating object
+// returns vehicle rating
+function getVehicleRating(conditionsRating) {
+    const vehicle = localStorage.getItem('vehicle');
+    if (vehicle == null) return 0;
+
+    let vehicleRating = 0;
+
+    if (vehicle.type == 'SUV' || vehicle.type == 'Truck') vehicleRating += 1;
+    if (vehicle.tire == 'Summer' && conditionsRating.values.temperature == 10) vehicleRating += 0;
+    if (vehicle.tire == 'All Weather' && conditionsRating.values.temperature == 10) vehicleRating += 3;
+    if (vehicle.tire == 'Winter' && conditionsRating.values.temperature == 10) vehicleRating += 6;
+    if (vehicle.drivetrain == 'Front Wheel Drive' && (conditionsRating.values.temperature == 10
+        || conditionsRating.values.percipitation == 8)) vehicleRating += 1;
+    if ((vehicle.drivetrain == 'All Wheel Drive' || vehicle.drivetrain == '4x4') &&
+        (conditionsRating.values.temperature == 10 || conditionsRating.values.percipitation == 8)) vehicleRating += 3;
+
+    return vehicleRating;
+}
+
 // Animates the speedometer display and changes rating number
 // takes value from 0 to 1
 function spinNeedle(value) {
@@ -131,27 +170,7 @@ function spinNeedle(value) {
     }
 }
 
-// Calculates vehicle safety rating from vehicle info in local storage
-// takes weather conditions rating object
-// returns vehicle rating
-function getVehicleRating(conditionsRating) {
-    const vehicle = localStorage.getItem('vehicle');
-    if (vehicle == null) return 0;
-
-    let vehicleRating = 0;
-
-    if (vehicle.type == 'SUV' || vehicle.type == 'Truck') vehicleRating += 1;
-    if (vehicle.tire == 'Summer' && conditionsRating.values.temperature == 10) vehicleRating += 0;
-    if (vehicle.tire == 'All Weather' && conditionsRating.values.temperature == 10) vehicleRating += 3;
-    if (vehicle.tire == 'Winter' && conditionsRating.values.temperature == 10) vehicleRating += 6;
-    if (vehicle.drivetrain == 'Front Wheel Drive' && (conditionsRating.values.temperature == 10
-        || conditionsRating.values.percipitation == 8)) vehicleRating += 1;
-    if ((vehicle.drivetrain == 'All Wheel Drive' || vehicle.drivetrain == '4x4') &&
-        (conditionsRating.values.temperature == 10 || conditionsRating.values.percipitation == 8)) vehicleRating += 3;
-
-    return vehicleRating;
-}
-
+// Populates the rating information and map link below the speedometer graphic
 function populateRatingInfo(rating, weather) {
 
     $('#hazard-warnings').load('../text/hazard_warnings.html', () => {

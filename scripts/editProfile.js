@@ -6,17 +6,18 @@ function userProfile() {
         currentUser = db.collection("users").doc(user.uid);
         let fName = document.getElementById("inputFirstName").value;
         let lName = document.getElementById("inputLastName").value;
-        let located = document.getElementById("inputLocation").value;
+        //let located = document.getElementById("inputLocation").value;
         let email = document.getElementById("inputEmailAddress").value;        
 
         currentUser.set({ 
             fname: fName,
             lname: lName,
             email: email,
-            location: located,
+            //location: located,
     }).then(function () {
         console.log("New user information added to firestore");
-        window.location.assign("new_vehicle_add.html");       //re-direct to vehicle.html after adding specs.
+        //window.location.assign("new_vehicle_add.html");       //re-direct to vehicle.html after adding specs.
+        window.location.assign("index.html");       //re-direct to index.html after adding specs.
  }).catch(function (error) {
         console.log("Error adding new vehicle: " + error);
  });

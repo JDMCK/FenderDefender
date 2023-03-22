@@ -1,23 +1,9 @@
 /* About Us Stylings */
-.header {
-    text-align: center;
-    padding: 20px;
-}
-
 .main {
     max-width: 100%;
     margin: 0 auto;
-    padding: 20px;
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(25%);
-    grid-template-rows: repeat(25%)
+    padding: 20px
 }
-
-.navbar-nav {
-    --bs-nav-link-color: whitesmoke;
-}
-
 
 /* Searchbar Stylings */
 .searchbar {
@@ -33,25 +19,23 @@
 }
 
 /* General Stylings */
-.bg-primary {
-    background: #1C6E8C !important;
-}
-
 .text-primary {
     color: white !important;
 }
 
 .jesse {
-    max-width: 25%;
-    max-height: 25%;
+    /* max-width: 50%;
+    max-height: 50%; */
+    width: 50%;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .eric {
-    max-width: 50%;
-    max-height: 50%;
+    /* max-width: 50%;
+    max-height: 50%; */
+    width: 50%;
 }
 
 h3 {
@@ -71,8 +55,13 @@ p {
 }
 
 .ross {
-    max-width: 25%;
-    max-height: 10%;
+    /* max-width: 25%;
+    max-height: 10%; */
+    width: 50%;
     justify-content: center;
     align-items: center;
+}
+
+.portrait {
+    margin-top: 2em;
 }

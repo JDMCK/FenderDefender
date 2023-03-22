@@ -30,8 +30,8 @@
     z-index: -1;
 }
 
-/* Confirm Stylings */
-#confirmRoute {
+/* Confirm Button Stylings */
+#confirm-route {
     position: fixed;
     top: 20%;
     width: 100%;
@@ -41,9 +41,29 @@
 
 #confirm-btn {
     width: 90px;
+    margin: 10px;
 }
 #cancel-btn {
     width: 90px;
+    margin: 10px;
+}
+
+#drive-btn {
+    width: 90px;
+    margin: 10px;
+}
+#back-btn {
+    width: 90px;
+    margin: 10px;
+}
+
+#confirm-safety-modal {
+    width: 90px;
+    margin: 10px;
+}
+#cancel-safety-modal {
+    width: 90px;
+    margin: 10px;
 }
 
 /* SafetyRating Stylings */

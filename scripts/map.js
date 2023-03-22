@@ -1,6 +1,8 @@
 let from;
 let to;
-const apiKey = '';
+let formattedFrom;
+let formattedTo;
+const apiKey = 'AIzaSyAvVBwD347tCmjaM9WzFeBD7W8iLWTdIXA';
 
 // Initialize and add the map
 function initMap() {
@@ -29,13 +31,10 @@ window.onload = () => {
 
 
   // Post search button click
-  confirmRoute = document.getElementById('confirmRoute');
+  confirmRoute = document.getElementById('confirm-route');
 
   confirmBtn = document.getElementById('confirm-btn');
-  confirmBtn.onclick = () => {
-    const url = './safetyRating.html?';
-    window.location.href = url + `from=${from}&to=${to}`;
-  };
+  confirmBtn.onclick = nextPage;
 
   searchbar = document.getElementById('searchbar');
 
@@ -73,6 +72,11 @@ function search() {
         if (HttpTo.readyState == 4 && HttpTo.status == 200) {
           const jsonTo = JSON.parse(HttpTo.response);
           to = [jsonTo.results[0].geometry.location.lat, jsonTo.results[0].geometry.location.lng];
+
+          formattedFrom = jsonFrom.results[0].formatted_address;
+          console.log(jsonFrom);
+          formattedTo = jsonTo.results[0].formatted_address;
+
           calcRoute();
           //getWeather(from, to);
         }
@@ -80,6 +84,14 @@ function search() {
     }
   }
 }
+
+// Goes to next page by forming url with parameters
+function nextPage() {
+  let url = './safetyRating.html?';
+  url += `from=${from}&to=${to}`;
+  url += `&formattedAddress=${formattedFrom}/${formattedTo}`;
+  window.location.href = url;
+};
 
 function calcRoute() {
   const request = {
