@@ -31,7 +31,7 @@ window.onload = () => {
 // returns HTTP response
 function getWeather() {
 
-    return '{"lat":49.07,"lon":-122.2887,"timezone":"America/Vancouver","timezone_offset":-25200,"current":{"dt":1679368762,"sunrise":1679321535,"sunset":1679365262,"temp":9.16,"feels_like":8.65,"pressure":1008,"humidity":93,"dew_point":8.09,"uvi":0,"clouds":100,"visibility":10000,"wind_speed":1.54,"wind_deg":200,"weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04n"}]}}';
+    //return '{"lat":49.07,"lon":-122.2887,"timezone":"America/Vancouver","timezone_offset":-25200,"current":{"dt":1679368762,"sunrise":1679321535,"sunset":1679365262,"temp":9.16,"feels_like":8.65,"pressure":1008,"humidity":93,"dew_point":8.09,"uvi":0,"clouds":100,"visibility":10000,"wind_speed":1.54,"wind_deg":200,"weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04n"}]}}';
 
     const params = new URL(window.location.href);
     const from = params.searchParams.get('from').split(',');

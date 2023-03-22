@@ -49,6 +49,8 @@ function populateVehicleInfo() {
                   if (vehicle_drivetrain != null) {
                     $("#vehicle-drivetrain").text(vehicle_drivetrain);
                   }
+
+                  displayCardsDynamically("myVehicles", "my-container");
                 })
               });
       } else {
@@ -90,7 +92,7 @@ function addVehicle() {
  return false;
 })}
 
-// Grabs vehicle info from firestore to display in vehicle card upon changing vehicle
+// Grabs vehicle info from firestore upon changing vehicle
 function displayCardsDynamically(collection, containerId) {
   firebase.auth().onAuthStateChanged(user =>{
     if(user) {  
@@ -125,10 +127,15 @@ function displayCardsDynamically(collection, containerId) {
             tire: tire,
             drivetrain: dt
           }
-          localStorage.setItem('vehicle', JSON.stringify(vehiclObj))
+          // Adds vehicle to local storage
+          localStorage.setItem('vehicle', JSON.stringify(vehiclObj));
+          console.log(JSON.stringify(vehiclObj));
         });
         
-        document.getElementById(containerId).appendChild(select);
+        console.log(select);
+        let container = document.getElementById(containerId);
+        container.appendChild(select);
+
       })
       .catch(error => {
         console.error(error);
@@ -136,7 +143,7 @@ function displayCardsDynamically(collection, containerId) {
 } else {
   console.log('No user signed in.')
 }})}
-displayCardsDynamically("myVehicles", "my-container")
+
   
 
 function writeVehicle() {
