@@ -4,6 +4,11 @@
     --bs-nav-link-color: white;
 }
 
+/* Login Stylings */
+.login {
+    margin: 20px;
+}
+
 /* Searchbar Stylings */
 .searchbar {
     margin: auto;

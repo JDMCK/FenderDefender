@@ -1,6 +1,7 @@
 
 function loadSkeleton() {
     $('#navbar').load('../text/navbar.html');
+    $('#navbar-guest').load('../text/navbar_guest.html');
     $('#body-cards').load('../text/body_cards.html');
     //$('#footer').load('../text/footer.html');
     $('#searchbar').load('../text/searchbar.html')
