@@ -4,15 +4,13 @@ var currentUser;
 function editVehicle() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
-            var user = authResult.user;
-            console.log(user.uid);
+            //var user = authResult.user;
             currentUser = db.collection("users").doc(user.uid);
             var vehicleRef = db.collection('users').doc(user.uid).collection('myVehicles');
             let tire = document.getElementById("vehicle_tires").value;
             let type = document.getElementById("vehicle_type").value;
             let drivetrain = document.getElementById("vehicle_drivetrain").value;
             let nickname = document.getElementById("vehicle_name").value;
-            console.log(user.uid);
             vehicleRef.set({
                 vehicle_name: nickname,
                 vehicle_type: type,

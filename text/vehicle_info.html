@@ -38,11 +38,11 @@
           Current Drivetrain: <span id="vehicle-drivetrain"></span>
         </p>
         <div class="text-center">
-          <button type="button" class="btn btn-primary btn-sm buttons change-current-vehicle"><a
-              href="../app/editVehicle.html">Edit</a></button>
+          <a href="../app/editVehicle.html" style="text-decoration: none;"><button type="button"
+              class="btn btn-primary buttons change-current-vehicle">Edit</button></a>
 
           <!--Deleting a vehicle modal-->
-          <button type="button" class="btn btn-danger btn-sm buttons change-current-vehicle" data-bs-toggle="modal"
+          <button type="button" class="btn btn-danger buttons change-current-vehicle" data-bs-toggle="modal"
             data-bs-target="#ModalRemove">
             Delete
           </button>
@@ -52,7 +52,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="ModalRemoveLabel">
-                  You are removing this selected vehicle.
+                  You are removing the current vehicle.
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>

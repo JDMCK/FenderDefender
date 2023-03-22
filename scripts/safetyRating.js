@@ -1,4 +1,4 @@
-const weatherAPIKey = '';
+const weatherAPIKey = '5ea5694c9c5f9ff5f18b88bd82c82ae6';
 
 window.onload = () => {
     ratingDisplay = document.getElementById('rating-display');
@@ -10,7 +10,6 @@ window.onload = () => {
         window.location.href = './map.html';
     }
     driveBtn = document.getElementById('drive-btn').onclick = () => {
-        console.log('modal time!')
         $('#modal').modal('show');
     };
     
@@ -115,6 +114,7 @@ function percipitation(weather, literal) {
 function getFinalRating(conditionsRating, vehicleRating) {
     const bias = 0.5;
     let value = (conditionsRating.rating - vehicleRating) / (conditionsRating.worstRating * bias); // From 0 to 1
+    if (value < 0) value = 0;
     return value;
 }
 
@@ -122,7 +122,8 @@ function getFinalRating(conditionsRating, vehicleRating) {
 // takes weather conditions rating object
 // returns vehicle rating
 function getVehicleRating(conditionsRating) {
-    const vehicle = localStorage.getItem('vehicle');
+    let vehicle = localStorage.getItem('vehicle');
+    vehicle = JSON.parse(vehicle);
     if (vehicle == null) return 0;
 
     let vehicleRating = 0;
@@ -135,7 +136,6 @@ function getVehicleRating(conditionsRating) {
         || conditionsRating.values.percipitation == 8)) vehicleRating += 1;
     if ((vehicle.drivetrain == 'All Wheel Drive' || vehicle.drivetrain == '4x4') &&
         (conditionsRating.values.temperature == 10 || conditionsRating.values.percipitation == 8)) vehicleRating += 3;
-
     return vehicleRating;
 }
 
@@ -147,8 +147,6 @@ function spinNeedle(value) {
     let interval = setInterval(speedometerAnimation, 1000 / fps);
     const totalTime = 1; // in seconds
     let tempVal = 0;
-
-    console.log(value);
 
     function speedometerAnimation() {
 

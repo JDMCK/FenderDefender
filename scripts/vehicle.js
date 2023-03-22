@@ -98,10 +98,10 @@ function displayCardsDynamically(collection, containerId) {
     if(user) {  
 
     let select = document.createElement("ul");
-    let placeholder = document.createElement("option");
-    placeholder.value = "";
-    placeholder.text = "Choose...";
-    select.appendChild(placeholder);
+    // let placeholder = document.createElement("option");
+    // placeholder.value = "";
+    // placeholder.text = "Choose...";
+    // select.appendChild(placeholder);
 
     var vehicleRef = db.collection('users').doc(user.uid).collection(collection);
 
@@ -114,22 +114,26 @@ function displayCardsDynamically(collection, containerId) {
           var dt = doc.data().vehicle_drivetrain;
           const option = document.createElement('option');
           option.value = (title + "," + type + "," + tire + "," + dt);
-          option.text = (title + ": " + type + " with " + tire + " tires and " + dt);
+          option.text = (title + " - " + type);
           // console.log(option.value);
           select.appendChild(option);
         });
 
         select.addEventListener("click", (event) => {
-          updateUserData(event.target.value);
-          let vehiclObj = {
-            title: title,
-            type: type,
-            tire: tire,
-            drivetrain: dt
+          console.log(event.target.value);
+
+          let vehicleInfo = event.target.value;
+          vehicleInfo = vehicleInfo.split(',');
+
+          let vehicleObj = {
+            title: vehicleInfo[0],
+            type: vehicleInfo[1],
+            tire: vehicleInfo[2],
+            drivetrain: vehicleInfo[3]
           }
           // Adds vehicle to local storage
-          localStorage.setItem('vehicle', JSON.stringify(vehiclObj));
-          console.log(JSON.stringify(vehiclObj));
+          localStorage.setItem('vehicle', JSON.stringify(vehicleObj));
+          updateUserData(event.target.value);
         });
         
         console.log(select);
@@ -178,8 +182,6 @@ function updateUserData(option) {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       const [title, type, tire, dt] = option.split(",");
-      console.log(option);
-      console.log(type);
       db.collection("users").doc(user.uid).update({
         vehicle_name: title,
         vehicle_type: type,

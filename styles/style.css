@@ -83,7 +83,7 @@
     margin: 10px;
 }
 
-#confirm-safety-modal {
+.confirm-modal {
     width: 90px;
     margin: 10px;
 }
@@ -227,6 +227,7 @@
     top: 88%;
     left: 77%;
 }
+
 #add-new-vehicle-btn img {
     width: 25px;
     filter: invert();
@@ -234,6 +235,16 @@
 
 #change-vehicle-dropdown {
     margin: 20px;
+}
+
+#my-container ul {
+    padding: 0;
+    margin: 0;
+}
+
+#my-container option {
+    padding: 0;
+    margin: 0;
 }
 
 #vehicle-info-card {
@@ -301,8 +312,8 @@ a {
     display: none;
     float: left;
     min-width: 1px;
-    padding: 5px 0;
-    margin: 2px 0 0;
+    /* padding: 5px 0; */
+    /* margin: 2px 0 0; */
     font-size: 14px;
     text-align: left;
     list-style: none;

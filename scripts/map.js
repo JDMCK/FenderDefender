@@ -2,7 +2,7 @@ let from;
 let to;
 let formattedFrom;
 let formattedTo;
-const apiKey = '';
+const apiKey = 'AIzaSyAvVBwD347tCmjaM9WzFeBD7W8iLWTdIXA';
 
 // Initialize and add the map
 function initMap() {
@@ -29,7 +29,14 @@ window.onload = () => {
   searchbarTo = document.getElementById('searchbar-to');
   searchbarTo.value = "mei secondary abbotsford";
 
-  $('#circle-btn').popover();
+  circleBtn = document.getElementById('circle-btn').onclick = () => {
+    displayCar();
+    $('#modal').modal('show');
+  };
+
+  confirmCar = document.getElementById('confirm-car-modal').onclick = () => {
+    $('#modal').modal('hide');
+  }
 
   // Post search button click
   confirmRoute = document.getElementById('confirm-route');
@@ -111,6 +118,12 @@ function calcRoute() {
 function runConfirm() {
   confirmRoute.style.display = 'flex';
   searchbar.style.display = 'none';
+}
+
+function displayCar() {
+  let vehicle = localStorage.getItem('vehicle');
+  vehicle = JSON.parse(vehicle);
+  document.getElementById('car-name-modal').innerHTML = '<br>' + vehicle.title + ' - ' + vehicle.type;
 }
 
 // parses road names from results object and returns list
