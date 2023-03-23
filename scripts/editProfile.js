@@ -1,5 +1,5 @@
 //Function works to change the car type, not actually add a new vehicle to the collection.//
-function userProfile() {
+function updateUserInfo() {
     firebase.auth().onAuthStateChanged(user =>{
         if (user){
         console.log(user.uid); 
@@ -7,12 +7,13 @@ function userProfile() {
         let fName = document.getElementById("inputFirstName").value;
         let lName = document.getElementById("inputLastName").value;
         //let located = document.getElementById("inputLocation").value;
-        let email = document.getElementById("inputEmailAddress").value;        
+        let email = document.getElementById("inputEmailAddress").value;
+        user.updateEmail(email);
 
-        currentUser.set({ 
+        currentUser.update({ 
             fname: fName,
             lname: lName,
-            email: email,
+            email: email
             //location: located,
     }).then(function () {
         console.log("New user information added to firestore");

@@ -18,25 +18,35 @@ function addVehicle() {
                 return;
             }
 
-            var vehicleRef = db.collection('users').doc(user.uid).collection('myVehicles');
-            vehicleRef.add({
+            var vehicleCollectionRef = db.collection('users').doc(user.uid).collection('myVehicles');
+            vehicleCollectionRef.add({
                 vehicle_name: nickname,
                 vehicle_type: type,
                 vehicle_tires: tire,
                 vehicle_drivetrain: drivetrain,
                 last_updated: firebase.firestore.FieldValue.serverTimestamp(),  //current system time           
-            }).then(function () {
+            }).then(function (vehicleRef) {
                 console.log("New vehicle added to firestore");
                 currentUser.update({
                     vehicle_name: nickname,
                     vehicle_type: type,
                     vehicle_tires: tire,
                     vehicle_drivetrain: drivetrain,
+                    vehicle_ref: vehicleRef.id
                 });       //re-direct to vehicle.html after adding specs.
+                let vehicleObj = {
+                    title: nickname,
+                    type: type,
+                    tire: tire,
+                    drivetrain: drivetrain
+                };
+                // Adds vehicle to local storage
+                localStorage.setItem('vehicle', JSON.stringify(vehicleObj));
                 window.location.assign("vehicle.html");
             }).catch(function (error) {
                 console.log("Error adding new vehicle: " + error);
             });
+            console.log(vehicleRef);
         } else {
             return true;
         }
