@@ -228,6 +228,10 @@
     left: 77%;
 }
 
+#add-vehicle {
+    width: 75px;
+}
+
 #add-new-vehicle-btn img {
     width: 25px;
     filter: invert();
