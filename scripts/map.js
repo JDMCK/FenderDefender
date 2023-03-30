@@ -2,7 +2,7 @@ let from;
 let to;
 let formattedFrom;
 let formattedTo;
-const apiKey = 'AIzaSyAvVBwD347tCmjaM9WzFeBD7W8iLWTdIXA';
+const apiKey = '';
 
 // Initialize and add the map
 function initMap() {
