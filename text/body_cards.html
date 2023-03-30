@@ -1,35 +1,28 @@
 <!-- Body Cards -->
-<div class="p-5 mb-4 bg-light rounded-3">
+<div class="p-4 mb-4 bg-secondary rounded-5 body-card">
     <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">Welcome to Fender Defender!</h1>
+        <h1 class="display-5 fw-bold">Know before you go!</h1>
         <p class="col-md-8 fs-4">
             Our goal is to help B.C. drivers to decide whether or not the drive
             they are planning will be safe and to ease the stress of having to
             make the decision.
         </p>
-        <button class="btn btn-primary btn-lg" type="button" onclick="
-            window.location.href = './map.html';">
-            Know before you go!
+        <button class="btn btn-light btn-lg" id="start-trip" type="button" onclick="
+            window.location.href = './login.html';">
+            <b>Start your trip!</b>
         </button>
     </div>
 </div>
-<div class="align-items-md-stretch">
-    <div class="col-md-6">
-        <div class="h-100 p-5 bg-light rounded-3">
-            <h2>Who we are!</h2>
-            <p>
-                Fender Defender was created by a team of first-year Computer Systems
-                Technology students at the British Columbia Institute of Technology
-                in Burnaby, B.C. As a part of our journey towards learning good software
-                principals, we developed Fender Defender as a tool to cut down on the
-                effect weather has on your road safety. Our goal is to provide
-                a system to ensure you can feel as comfortable as possible about the
-                safety of your upcoming drive!
-            </p>
-            <button class="btn btn-outline-secondary" type="button" onclick="
-            window.location.href = './about_us.html';">
-                Learn More!
-            </button>
-        </div>
+<div class="p-4 mb-4 bg-tertiary rounded-5 body-card">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Who we are...</h1>
+        <p>
+            Fender Defender was created by a team of first-year CST
+            students at the BCIT in Burnaby, B.C.
+        </p>
+        <button class="btn btn-light btn-lg" type="button" id="about-us" onclick="
+            window.location.href = './login.html';">
+            Learn More!
+        </button>
     </div>
 </div>

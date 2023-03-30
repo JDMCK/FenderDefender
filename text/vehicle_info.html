@@ -27,8 +27,14 @@
         font-size: 1.1em;
       }
     </style>
-    <h2 id="car-name">Car Name: <span id="vehicle-name"></span></h2>
-    <img id="vehicle-icon" src="" alt="vehicle">
+    <h2 id="car-name">Car Name: <b><span id="vehicle-name"></span></b></h2>
+    <div id="vehicle-icon-display">
+      <img id="vehicle-icon" src="" alt="vehicle">
+      <a href="./map.html" style="text-decoration: none;">
+        <!-- <span style="position: relative; left: 88px; font-size: 1em; color: white">Go!</span> -->
+        <img id="go-icon" src="../images/go.png" alt="vehicle">
+      </a>
+    </div>
     <div class="card" id="vehicle-info-card">
       <div class="card-body">
         <h5 class="card-title">Specifications: </h5>
@@ -38,13 +44,19 @@
           Current Drivetrain: <span id="vehicle-drivetrain"></span>
         </p>
         <div class="text-center">
-          <button type="button" class="btn btn-primary buttons change-current-vehicle" onclick="editVehicle();">Edit</button>
+          <button type="button" class="btn btn-tertiary buttons change-current-vehicle" onclick="editVehicle();">Edit</button>
 
           <!--Deleting a vehicle modal-->
           <button type="button" class="btn btn-danger buttons change-current-vehicle" data-bs-toggle="modal"
             data-bs-target="#ModalRemove">
             Delete
           </button>
+          <div id="add-new-vehicle-btn">
+            <a type="button" class="btn btn-secondary" href="./new_vehicle_add.html">
+              Add New Vehicle
+              <img src="../images/add.png" alt="plus sign">
+            </a>
+          </div>
         </div>
         <div class="modal fade" id="ModalRemove" tabindex="-1" aria-labelledby="ModalRemoveLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -59,7 +71,7 @@
                 Attention! Removing a vehicle is permanent and cannot be undone.
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                <button type="button" class="btn btn-tertiary" data-bs-dismiss="modal">
                   Cancel
                 </button>
                 <button type="button" class="btn btn-danger" onclick="deleteVehicle();">
@@ -73,13 +85,12 @@
       </div>
     </div>
   </div>
-
   <div class="dropdown text-center" id="change-vehicle-dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
       aria-expanded="false">
       Change Vehicle
     </a>
-
+  
     <ul class="dropdown-menu dropdownbuttons" aria-labelledby="dropdownMenuLink">
       <div id="my-container"></div>
     </ul>
@@ -88,8 +99,5 @@
           id="plusSign" /></a>
     </button> -->
   </div>
-  <a id="add-new-vehicle-btn" href="../app/new_vehicle_add.html">
-    <img src="../images/add.png" alt="plus sign">
-  </a>
 </div>
 <!--End of Container div-->

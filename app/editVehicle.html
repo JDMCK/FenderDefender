@@ -37,7 +37,7 @@
   <!-- Navbar -->
   <div id="navbar"></div>
   <div id="new-vehicle-form">
-    <label for="inputState" class="form-label"><h2>Vehicle specifications</h2></label>
+    <h2 id="header">Edit My Vehicle:</h2>
     <img src="../images/tag.png" alt="nametag" class="spec-icon">
     <div class="mb-3">
       <input type="vehicle_name" id="vehicle_name" class="form-control" placeholder="Enter a nickname...">
@@ -69,7 +69,8 @@
     </select>
 
     <div class="col-12 text-center">
-      <button type="submit" class="btn btn-primary" onclick="editVehicle()">Submit</button>
+      <a class="btn btn-danger confirm-modal" type="button" href="./vehicle.html">Back</a>
+      <button type="submit" class="btn btn-secondary confirm-modal" id="save-vehicle" onclick="editVehicle()">Save</button>
     </div>
   </div>
 

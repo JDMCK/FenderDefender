@@ -130,18 +130,6 @@ function displayCardsDynamically(collection, containerId) {
 
           select.addEventListener("click", (event) => {
             console.log(event.target.value);
-
-            let vehicleInfo = event.target.value;
-            vehicleInfo = vehicleInfo.split(',');
-
-            let vehicleObj = {
-              title: vehicleInfo[0],
-              type: vehicleInfo[1],
-              tire: vehicleInfo[2],
-              drivetrain: vehicleInfo[3]
-            };
-            // Adds vehicle to local storage
-            localStorage.setItem('vehicle', JSON.stringify(vehicleObj));
             updateUserData(event.target.value);
           });
           let container = document.getElementById(containerId);

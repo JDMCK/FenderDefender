@@ -28,15 +28,6 @@ function editVehicle() {
                             vehicle_tires: tire,
                             vehicle_drivetrain: drivetrain,
                         });
-        
-                        let vehicleObj = {
-                            title: nickname,
-                            type: type,
-                            tire: tire,
-                            drivetrain: drivetrain
-                        };
-                        // Adds vehicle to local storage
-                        localStorage.setItem('vehicle', JSON.stringify(vehicleObj));
                         console.log("Vehicle edits added to firestore");
                         window.location.assign("vehicle.html");       //re-direct to vehicle.html after adding specs.
                     }).catch(function (error) {

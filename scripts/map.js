@@ -2,7 +2,7 @@ let from;
 let to;
 let formattedFrom;
 let formattedTo;
-const apiKey = '';
+const apiKey = 'AIzaSyAvVBwD347tCmjaM9WzFeBD7W8iLWTdIXA';
 
 // Initialize and add the map
 function initMap() {
@@ -29,9 +29,8 @@ window.onload = () => {
   searchbarTo = document.getElementById('searchbar-to');
   searchbarTo.value = "mei secondary abbotsford";
 
-  circleBtn = document.getElementById('circle-btn').onclick = () => {
+  circleBtn = document.getElementById('show-car-btn').onclick = () => {
     displayCar();
-    $('#modal').modal('show');
   };
 
   confirmCar = document.getElementById('confirm-car-modal').onclick = () => {
@@ -120,10 +119,21 @@ function runConfirm() {
   searchbar.style.display = 'none';
 }
 
-function displayCar() {
-  let vehicle = localStorage.getItem('vehicle');
-  vehicle = JSON.parse(vehicle);
-  document.getElementById('car-name-modal').innerHTML = '<br>' + vehicle.title + ' - ' + vehicle.type;
+async function displayCar() {
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+
+      let currentUser = db.collection("users").doc(user.uid);
+      currentUser.get()
+        .then(userDoc => {
+          document.getElementById('car-name-modal').innerHTML = '<br>' + userDoc.data().vehicle_name + ' - ' + userDoc.data().vehicle_type;
+          $('#modal').modal('show');
+        })
+    } else {
+      window.location.href = './login.html';
+    }
+  })
+  // let vehicle = localStorage.getItem('vehicle');
 }
 
 // parses road names from results object and returns list

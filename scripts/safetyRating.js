@@ -1,4 +1,4 @@
-const weatherAPIKey = '';
+const weatherAPIKey = '5ea5694c9c5f9ff5f18b88bd82c82ae6';
 
 window.onload = () => {
     ratingDisplay = document.getElementById('rating-display');

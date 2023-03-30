@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;800&display=swap');
+
+* {
+    font-family: 'Baloo Bhai 2', cursive;
+}
+
 /* Navbar Stylings */
 
 .navbar-nav {
@@ -18,6 +24,7 @@
 
 #search-button {
     margin-top: 1em;
+    width: 110px;
 }
 
 #searchbar {
@@ -36,21 +43,22 @@
 }
 
 /* Circle Car Button Stylings */
-#circle-btn {
-    width: 65px;
-    height: 65px;
-    border-radius: 100%;
-    background-color: #5216d1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#show-car-btn {
+    /* width: 300px;
+    height: 65px; */
+    /* border-radius: 100%; */
+    /* background-color: #5216d1; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
     position: absolute;
-    top: 88%;
-    left: 77%;
+    top: 90%;
+    left: 50%;
 }
 
-#circle-btn img {
-    width: 40px;
+#show-car-btn img {
+    width: 30px;
+    margin-left: 0.5em;
     filter: invert();
 }
 
@@ -61,11 +69,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-}
-
-#confirm-btn {
-    width: 90px;
-    margin: 10px;
 }
 
 #cancel-btn {
@@ -88,19 +91,7 @@
     margin: 10px;
 }
 
-#cancel-safety-modal {
-    width: 90px;
-    margin: 10px;
-}
-
 /* SafetyRating Stylings */
-#needle {
-    position: relative;
-    top: -175px;
-    width: 22vw;
-    display: block;
-    margin: 0 auto;
-}
 
 #speedometer {
     width: 100vw;
@@ -113,6 +104,7 @@
 }
 
 /* Speedometer Stylings */
+
 .half-circle {
     border-radius: 100%;
     width: 240px;
@@ -215,26 +207,28 @@
     margin: 10px;
 }
 
-#add-new-vehicle-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    background-color: #5216d1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 88%;
-    left: 77%;
+#add-new-vehicle-btn a {
+    width: 215px;;
+    /* height: 50px; */
+    /* border-radius: 100%; */
+    /* background-color: #5216d1; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* position: absolute;
+    top: 90%;
+    left: 50%; */
+    margin-top: 15px;
+}
+
+#add-new-vehicle-btn img {
+    width: 15px;
+    margin-left: 0.5em;
+    filter: invert();
 }
 
 #add-vehicle {
     width: 75px;
-}
-
-#add-new-vehicle-btn img {
-    width: 25px;
-    filter: invert();
 }
 
 #change-vehicle-dropdown {
@@ -267,24 +261,73 @@
     text-align: center;
 }
 
+#vehicle-icon-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #vehicle-icon {
     width: 175px;
-    margin: 0 auto;
-    display: block;
+    display: inline;
+}
+
+#go-icon {
+    width: 60px;
+    height: 100%;
+    display: inline;
+    margin-left: 40px;
+}
+
+#save-vehicle {
+    width: 90px;
+}
+
+/* Body Stylings */
+.body-card {
+    margin: 4%;
+    margin-bottom: 0%;
 }
 
 /* General Stylings */
+
+#header {
+    height: 0px;
+    text-align: center;
+    margin: 20px;
+    display: block;
+}
+
 .bg-primary {
     background: #5216d1 !important;
+}
+.btn-primary {
+    background-color: #5216d1 !important;
+    border-color: #5216d1 !important;
+}
+
+.bg-secondary {
+    background: #77d996 !important;
+}
+.btn-secondary {
+    background-color: #77d996 !important;
+    border-color: #77d996 !important;
+}
+
+.bg-tertiary {
+    background: #95c6fc
+}
+.btn-tertiary {
+    background-color: #95c6fc !important;
+    border-color: #95c6fc !important;
+    color: white !important;
+}
+
+.btn-danger {
+    background: #e15554;
 }
 
 .text-primary {
     color: white !important;
-}
-
-.btn-primary {
-    background-color: #5216d1 !important;
-    border-color: #5216d1 !important;
 }
 
 .btn-primary:disabled {
