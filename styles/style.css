@@ -129,7 +129,7 @@
 .ball {
     width: 24px;
     height: 24px;
-    background-color: rgb(252, 53, 53);
+    background-color: #77d996;
     border-radius: 100%;
     position: relative;
     left: 108px;
@@ -141,8 +141,8 @@
 
 .ball-fill {
     border-radius: 100%;
-    border-top: 120px solid rgb(252, 53, 53);
-    border-left: 120px solid rgb(252, 53, 53);
+    border-top: 120px solid #77d996;
+    border-left: 120px solid #77d996;
     border-bottom: 120px solid black;
     border-right: 120px solid black;
     position: absolute;
@@ -171,7 +171,7 @@
     border-radius: 100%;
     width: 20px;
     height: 20px;
-    background-color: rgb(252, 53, 53);
+    background-color: #77d996;
     position: absolute;
     right: 220px;
     top: 110px;
@@ -272,10 +272,14 @@
 }
 
 #go-icon {
-    width: 60px;
+    width: 40px;
     height: 100%;
     display: inline;
-    margin-left: 40px;
+    margin-left: 5px;
+    filter: invert();
+}
+#go-to-map-btn {
+    margin-left: 20px;
 }
 
 #save-vehicle {
@@ -349,6 +353,10 @@
 
 a {
     color: inherit;
+}
+
+#dropdownMenuLink {
+    width: 215px;
 }
 
 .dropdown-menu {

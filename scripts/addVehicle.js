@@ -40,8 +40,7 @@ function addVehicle() {
                     tire: tire,
                     drivetrain: drivetrain
                 };
-                // Adds vehicle to local storage
-                localStorage.setItem('vehicle', JSON.stringify(vehicleObj));
+
                 window.location.assign("vehicle.html");
             }).catch(function (error) {
                 console.log("Error adding new vehicle: " + error);

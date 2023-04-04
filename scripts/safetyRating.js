@@ -12,11 +12,11 @@ window.onload = () => {
     driveBtn = document.getElementById('drive-btn').onclick = () => {
         $('#modal').modal('show');
     };
-    
+
     modalCancelBtn = document.getElementById('cancel-safety-modal').onclick = () => {
         $('#modal').modal('hide');
     }
-    
+
     modalConfirmBtn = document.getElementById('confirm-safety-modal').onclick = () => {
         const param = new URL(window.location.href).searchParams.get('formattedAddress');
         const url = 'https://www.google.com/maps/dir/' + param;
@@ -61,9 +61,9 @@ function calcRating() {
         weights: {
             visibility: (x) => x * (x * x) / 100, // Exponential weight because visibility matters less the more you have
             dark: (x) => x * 0.6,
-            temperature: (x) => x,
+            temperature: (x) => 1.5 * x,
             windSpeed: (x) => x * 0.4,
-            percipitation: (x) => x,
+            percipitation: (x) => 2 * x,
         },
         values: {
             visibility: weather.visibility > 1000 ? 0 : 10 - weather.visibility / 100, // From 0 m - 1000 m
@@ -84,7 +84,6 @@ function calcRating() {
     }
     ratingDisplay.innerHTML = ConditionsRating.rating;
     const VehicleRating = getVehicleRating(ConditionsRating);
-
     let finalRating = getFinalRating(ConditionsRating, VehicleRating);
     spinNeedle(finalRating);
     populateRatingInfo(finalRating, weather);
@@ -115,6 +114,7 @@ function getFinalRating(conditionsRating, vehicleRating) {
     const bias = 0.5;
     let value = (conditionsRating.rating - vehicleRating) / (conditionsRating.worstRating * bias); // From 0 to 1
     if (value < 0) value = 0;
+    if (value > 1) value = 1;
     return value;
 }
 
@@ -122,13 +122,14 @@ function getFinalRating(conditionsRating, vehicleRating) {
 // takes weather conditions rating object
 // returns vehicle rating
 function getVehicleRating(conditionsRating) {
-    let vehicle = localStorage.getItem('vehicle');
+    let vehicleBias = 2; // Relative weight of vehicle
+
+    let vehicle = new URL(window.location.href).searchParams.get('vehicle')
     vehicle = JSON.parse(vehicle);
     if (vehicle == null) return 0;
 
     let vehicleRating = 0;
-
-    if (vehicle.type == 'SUV' || vehicle.type == 'Truck') vehicleRating += 1;
+    if (vehicle.type == 'SUV' || vehicle.type == 'Truck') vehicleRating += 2;
     if (vehicle.tire == 'Summer' && conditionsRating.values.temperature == 10) vehicleRating += 0;
     if (vehicle.tire == 'All Weather' && conditionsRating.values.temperature == 10) vehicleRating += 3;
     if (vehicle.tire == 'Winter' && conditionsRating.values.temperature == 10) vehicleRating += 6;
@@ -136,7 +137,7 @@ function getVehicleRating(conditionsRating) {
         || conditionsRating.values.percipitation == 8)) vehicleRating += 1;
     if ((vehicle.drivetrain == 'All Wheel Drive' || vehicle.drivetrain == '4x4') &&
         (conditionsRating.values.temperature == 10 || conditionsRating.values.percipitation == 8)) vehicleRating += 3;
-    return vehicleRating;
+    return vehicleRating * vehicleBias;
 }
 
 // Animates the speedometer display and changes rating number
@@ -164,7 +165,21 @@ function spinNeedle(value) {
 
         ball.style.rotate = ballDeg.toString() + 'deg';
         ballFill.style.rotate = ballFillDeg.toString() + 'deg';
-        ratingDisplay.innerHTML = Math.round(tempVal * 100);
+        let severity = 'Safe';
+        let colour = '#77d996'
+        if (tempVal >= 0.25) severity = 'Moderate';
+        if (tempVal >= 0.33) colour = '#ffbe31';
+        if (tempVal >= 0.5) severity = 'Risky';
+        if (tempVal >= 0.66) colour = '#e15554';
+        if (tempVal >= 0.75) severity = 'Dangerous';
+        if (tempVal == 1) severity = 'Extreme';
+
+        ratingDisplay.innerHTML = severity;
+        document.querySelectorAll('.severity').forEach(div => {
+            div.style.backgroundColor = colour;
+        });
+        document.getElementById('ball-fill').style.borderLeftColor = colour;
+        document.getElementById('ball-fill').style.borderTopColor = colour;
     }
 }
 

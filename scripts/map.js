@@ -24,10 +24,10 @@ window.onload = () => {
   searchbutton.onclick = search;
 
   searchbarFrom = document.getElementById('searchbar-from');
-  searchbarFrom.value = "3410 applewood dr abbotsford";
+  // searchbarFrom.value = "3410 applewood dr abbotsford";
 
   searchbarTo = document.getElementById('searchbar-to');
-  searchbarTo.value = "mei secondary abbotsford";
+  // searchbarTo.value = "mei secondary abbotsford";
 
   circleBtn = document.getElementById('show-car-btn').onclick = () => {
     displayCar();
@@ -97,7 +97,26 @@ function nextPage() {
   let url = './safetyRating.html?';
   url += `from=${from}&to=${to}`;
   url += `&formattedAddress=${formattedFrom}/${formattedTo}`;
-  window.location.href = url;
+
+  // Adds vehicle information
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+
+      let currentUser = db.collection("users").doc(user.uid);
+      currentUser.get()
+        .then(userDoc => {
+          let vehicle = {
+            drivetrain: userDoc.data().vehicle_drivetrain,
+            tire: userDoc.data().vehicle_tires,
+            type: userDoc.data().vehicle_type,
+          }
+          url += `&vehicle=${JSON.stringify(vehicle)}`;
+          window.location.href = url;
+        })
+    } else {
+      window.location.href = './login.html';
+    }
+  })
 };
 
 function calcRoute() {
@@ -119,7 +138,7 @@ function runConfirm() {
   searchbar.style.display = 'none';
 }
 
-async function displayCar() {
+function displayCar() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
 
