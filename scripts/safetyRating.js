@@ -173,7 +173,7 @@ function spinNeedle(value) {
         if (tempVal >= 0.66) colour = '#e15554';
         if (tempVal >= 0.75) severity = 'Dangerous';
         if (tempVal == 1) severity = 'Extreme';
-
+        
         ratingDisplay.innerHTML = severity;
         document.querySelectorAll('.severity').forEach(div => {
             div.style.backgroundColor = colour;
