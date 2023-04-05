@@ -6,7 +6,7 @@ function loadSkeleton() {
         if (user) {
             $('#navbar').load('../text/navbar.html');
             document.getElementById('start-trip').onclick = () => {
-                window.location.href = './map.html';
+                window.location.href = './vehicle.html';
             }
             document.getElementById('about-us').onclick = () => {
                 window.location.href = './about_us.html';

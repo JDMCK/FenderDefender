@@ -30,7 +30,7 @@ window.onload = () => {
 // returns HTTP response
 function getWeather() {
 
-    //return '{"lat":49.07,"lon":-122.2887,"timezone":"America/Vancouver","timezone_offset":-25200,"current":{"dt":1679368762,"sunrise":1679321535,"sunset":1679365262,"temp":9.16,"feels_like":8.65,"pressure":1008,"humidity":93,"dew_point":8.09,"uvi":0,"clouds":100,"visibility":10000,"wind_speed":1.54,"wind_deg":200,"weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04n"}]}}';
+    return '{"lat":49.5941,"lon":-121.1876,"timezone":"America/Vancouver","timezone_offset":-25200,"current":{"dt":1680641512,"sunrise":1680615325,"sunset":1680662383,"temp":-1.03,"feels_like":1.03,"pressure":1018,"humidity":53,"dew_point":-6.64,"uvi":3.06,"clouds":100,"visibility":8339,"wind_speed":1.23,"wind_deg":267,"wind_gust":1.11,"weather":[{"id":600,"main":"Snow","description":"light snow","icon":"13d"}],"snow":{"1h":0.36}}}';
 
     const params = new URL(window.location.href);
     const from = params.searchParams.get('from').split(',');
@@ -47,6 +47,8 @@ function getWeather() {
     // VVV Commented out because ^ async set to false
     // Http.onreadystatechange = (e) => {
     //     if (Http.readyState == 4 && Http.status == 200) {
+
+    console.log(Http.response);
     return Http.responseText;
     //     }
     // }
@@ -173,7 +175,7 @@ function spinNeedle(value) {
         if (tempVal >= 0.66) colour = '#e15554';
         if (tempVal >= 0.75) severity = 'Dangerous';
         if (tempVal == 1) severity = 'Extreme';
-        
+
         ratingDisplay.innerHTML = severity;
         document.querySelectorAll('.severity').forEach(div => {
             div.style.backgroundColor = colour;
