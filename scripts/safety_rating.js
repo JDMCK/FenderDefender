@@ -29,9 +29,6 @@ window.onload = () => {
 // Calls OpenWeather api to get weather information
 // returns HTTP response
 function getWeather() {
-
-    return '{"lat":49.5941,"lon":-121.1876,"timezone":"America/Vancouver","timezone_offset":-25200,"current":{"dt":1680641512,"sunrise":1680615325,"sunset":1680662383,"temp":-1.03,"feels_like":1.03,"pressure":1018,"humidity":53,"dew_point":-6.64,"uvi":3.06,"clouds":100,"visibility":8339,"wind_speed":1.23,"wind_deg":267,"wind_gust":1.11,"weather":[{"id":600,"main":"Snow","description":"light snow","icon":"13d"}],"snow":{"1h":0.36}}}';
-
     const params = new URL(window.location.href);
     const from = params.searchParams.get('from').split(',');
     const to = params.searchParams.get('to').split(',');
