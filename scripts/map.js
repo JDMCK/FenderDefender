@@ -2,7 +2,7 @@ let from;
 let to;
 let formattedFrom;
 let formattedTo;
-const apiKey = '';
+const apiKey = 'AIzaSyAvVBwD347tCmjaM9WzFeBD7W8iLWTdIXA';
 
 // Initialize and add the map
 function initMap() {
@@ -85,7 +85,6 @@ function search() {
           formattedTo = jsonTo.results[0].formatted_address;
 
           calcRoute();
-          //getWeather(from, to);
         }
       }
     }
@@ -94,7 +93,7 @@ function search() {
 
 // Goes to next page by forming url with parameters
 function nextPage() {
-  let url = './safetyRating.html?';
+  let url = './safety_rating.html?';
   url += `from=${from}&to=${to}`;
   url += `&formattedAddress=${formattedFrom}/${formattedTo}`;
 
@@ -152,7 +151,6 @@ function displayCar() {
       window.location.href = './login.html';
     }
   })
-  // let vehicle = localStorage.getItem('vehicle');
 }
 
 // parses road names from results object and returns list
@@ -179,6 +177,3 @@ function getRoadNames(result) {
   }
   return roadNames;
 }
-// Current thinking for getting road hazards:
-// to get weather, I find the center of my start and end and get weather at that point
-// to get road conditions, i grab all events (of hopefully around major status) and filter event descriptions for my road names

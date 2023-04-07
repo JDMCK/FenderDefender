@@ -1,4 +1,4 @@
-const weatherAPIKey = '';
+const weatherAPIKey = '5ea5694c9c5f9ff5f18b88bd82c82ae6';
 
 window.onload = () => {
     ratingDisplay = document.getElementById('rating-display');
@@ -44,14 +44,8 @@ function getWeather() {
     Http.open("GET", url, false);
     Http.send();
 
-    // VVV Commented out because ^ async set to false
-    // Http.onreadystatechange = (e) => {
-    //     if (Http.readyState == 4 && Http.status == 200) {
-
-    console.log(Http.response);
     return Http.responseText;
-    //     }
-    // }
+
 }
 
 // Calculates the overall safety rating by getting weather information and vehicle information

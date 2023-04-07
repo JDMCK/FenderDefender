@@ -26,7 +26,6 @@ function addVehicle() {
                 vehicle_drivetrain: drivetrain,
                 last_updated: firebase.firestore.FieldValue.serverTimestamp(),  //current system time           
             }).then(function (vehicleRef) {
-                console.log("New vehicle added to firestore");
                 currentUser.update({
                     vehicle_name: nickname,
                     vehicle_type: type,
@@ -45,7 +44,6 @@ function addVehicle() {
             }).catch(function (error) {
                 console.log("Error adding new vehicle: " + error);
             });
-            console.log(vehicleRef);
         } else {
             return true;
         }

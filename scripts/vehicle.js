@@ -2,10 +2,7 @@ var currentUser;
 var currentVehicle;
 
 function editVehicle() {
-  // let url = new URL('./editVehicle.html');
-  // console.log('hi')
-  // url += '';
-  window.location.href = './editVehicle.html';
+  window.location.href = './edit_vehicle.html';
 }
 
 // Populates the vehicle information section with current vehicle
@@ -75,7 +72,6 @@ populateVehicleInfo();
 function addVehicle() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
-      console.log(user.uid);
       currentUser = db.collection("users").doc(user.uid);
       let tire = document.getElementById("vehicle_tires").value;
       let type = document.getElementById("vehicle_type").value;
@@ -89,7 +85,6 @@ function addVehicle() {
         vehicle_drivetrain: drivetrain,
         last_updated: firebase.firestore.FieldValue.serverTimestamp(),  //current system time           
       }).then(function () {
-        console.log("New vehicle added to firestore");
         window.location.assign("vehicle.html");       //re-direct to vehicle.html after adding specs.
       }).catch(function (error) {
         console.log("Error adding new vehicle: " + error);
@@ -124,12 +119,10 @@ function displayCardsDynamically(collection, containerId) {
             const option = document.createElement('option');
             option.value = (title + "," + type + "," + tire + "," + dt + ',' + doc.id);
             option.text = (title + " - " + type);
-            // console.log(option.value);
             select.appendChild(option);
           });
 
           select.addEventListener("click", (event) => {
-            console.log(event.target.value);
             updateUserData(event.target.value);
           });
           let container = document.getElementById(containerId);
@@ -158,7 +151,6 @@ function updateUserData(option) {
         vehicle_ref: docId
       }, { merge: true })
         .then(() => {
-          console.log("User data successfully updated!");
           window.location.assign("vehicle.html");
         })
         .catch(error => {
@@ -176,7 +168,6 @@ function deleteVehicle() {
         .then(userDoc => {
           var vehicleRef = userDoc.data().vehicle_ref;
           db.collection("users").doc(user.uid).collection('myVehicles').doc(vehicleRef).delete().then(() => {
-            console.log('Succefully Deleted');
 
             var vehiclesCollectionRef = db.collection('users').doc(user.uid).collection('myVehicles');
 
@@ -185,7 +176,6 @@ function deleteVehicle() {
                 if (allvehicles.size == 0) {
                   location.reload();
                 } else {
-                  console.log(allvehicles.size);
                   const randomId = Math.floor(Math.random() * allvehicles.size);
                   var vehicleDoc = allvehicles.docs[randomId];
 
