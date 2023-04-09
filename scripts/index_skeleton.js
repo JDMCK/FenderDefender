@@ -11,7 +11,6 @@ function loadSkeleton() {
             document.getElementById('about-us').onclick = () => {
                 window.location.href = './about_us.html';
             }
-            console.log("SIGNED IN")
         } else {
             console.log("NO USER")
         }
