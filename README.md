@@ -3,6 +3,9 @@
 ## 1. Project Description
 An application that suggests whether the user should drive based on the car specs, road conditions, weather, and locations.
 
+![map](https://github.com/JDMCK/FenderDefender/blob/main/map.png?raw=true)
+![danger-rating](https://github.com/JDMCK/FenderDefender/blob/main/danger_rating.png?raw=true)
+
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
 * Ross Wong
