@@ -1,27 +1,22 @@
 # FenderDefender
 
-## 1. Project Description
 An application that suggests whether the user should drive based on the car specs, road conditions, weather, and locations.
 
 ![map](https://github.com/JDMCK/FenderDefender/blob/main/map.png?raw=true) | ![danger-rating](https://github.com/JDMCK/FenderDefender/blob/main/danger_rating.png?raw=true)
 
-## 2. Names of Contributors
-List team members and/or short bio's here... 
+## Contributors
 * Ross Wong
 * Eric Chau
 * Jesse McKenzie
 	
-## 3. Technologies and Resources Used
-List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
+## Technologies and Resources Used
 * HTML, CSS, JavaScript
 * Bootstrap 5.0 (Frontend library)
 * Firebase 8.0 (BAAS - Backend as a Service)
 * Google Maps API
 * Open Weather API
 
-## 4. Complete setup/installion/usage
-State what a user needs to do when they come to your project.  How do others start using your code or application?
-Here are the steps ...
+## Complete setup/installion/usage
 * Users will open the web page and be greeting with the landing page.
 * Users will be prompted to sign-in/sign-up but can use the app without an account with limited features.
 * Users who are new will be brought to a page to add a new vehicle but a vehicle is not required but will work with limited features.
@@ -33,18 +28,15 @@ Here are the steps ...
 * If the user is satisfied with the score, they can press continue and it was take them to Google Maps.
 * This ends their use of Fender Defender.
 
-## 5. Known Bugs and Limitations
-Here are some known bugs:
+## Known Bugs and Limitations
 * Google Maps API is called synchronously and can slow the final step significantly if the road conditions change between the route selection and the continue to Google maps portion.
 
-## 6. Features for Future
-What we'd like to build in the future:
+## Features for Future
 * Feature routes favourite's.
 * Change the weather calculations to better reflect longer routes.
 * Driver comfortability rating.
 	
-## 7. Contents of Folder
-Content of the project folder:
+## Contents of Folder
 * app
 * images
 * scripts
