@@ -1,7 +1,8 @@
 # FenderDefender
 
 An application that suggests whether the user should drive based on the car specs, road conditions, weather, and locations.
-
+Route Selection | Safety Rating
+:-:|:-:
 ![map](https://github.com/JDMCK/FenderDefender/blob/main/map.png?raw=true) | ![danger-rating](https://github.com/JDMCK/FenderDefender/blob/main/danger_rating.png?raw=true)
 
 ## Contributors
